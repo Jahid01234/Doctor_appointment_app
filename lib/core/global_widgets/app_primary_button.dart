@@ -1,42 +1,79 @@
 import 'package:doctor_appointment_app/core/const/app_colors.dart';
 import 'package:flutter/material.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 
 class AppPrimaryButton extends StatelessWidget {
-  final String title;
+  final String text;
+  final VoidCallback onTap;
+  final Widget? icon;
+  final double? radius;
+  final Color? bgColor;
+  final Color? border;
+  final Color? textColor;
+  final double? fontSize;
   final double? height;
   final double? width;
-  final Color? bgColor;
-  final Function()? onTap;
+  final FontWeight? fontWeight;
 
   const AppPrimaryButton({
     super.key,
+    required this.text,
+    required this.onTap,
+    this.icon,
+    this.bgColor,
+    this.border,
+    this.textColor,
+    this.radius,
+    this.fontSize,
     this.height,
     this.width,
-    this.bgColor,
-    this.onTap,
-    required this.title,
+    this.fontWeight,
   });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: height ?? 57,
-        width: width ?? 157,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: bgColor ?? AppColors.lightGreenColor,
-        ),
-        child:  Center(
-          child: Text(
-            title,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-            ),
+    return Material(
+      color: Colors.transparent,
+      borderRadius: BorderRadius.circular(radius ?? 12),
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          height: height ?? 60,
+          width: width ?? double.infinity,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(radius ?? 12),
+            color: bgColor ?? AppColors.lightGreenColor,
+            border: border != null
+                ? Border.all(color: border!)
+                : null,
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: Text(
+                  text,
+                  style: GoogleFonts.poppins(
+                    fontSize: fontSize ?? 16,
+                    fontWeight: fontWeight ?? FontWeight.w600,
+                    color: textColor ?? AppColors.blackColor,
+                  ),
+                ),
+              ),
+              if (icon != null) ...[
+                const SizedBox(width: 5),
+                Container(
+                  decoration: const BoxDecoration(
+                    color: AppColors.blackColor,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Center(child: icon),
+                ),
+              ],
+            ],
           ),
         ),
       ),

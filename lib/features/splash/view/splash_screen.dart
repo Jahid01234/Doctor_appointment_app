@@ -23,9 +23,9 @@ class SplashScreen extends StatelessWidget {
               children: [
                 Image.asset(
                     ImagesPath.appImg,
-                    height: 40,
-                    width: 50,
-                    fit: BoxFit.fill,
+                    height: 35,
+                    width: 35,
+                    fit: BoxFit.cover,
                 ),
                 SizedBox(width: 10),
                 RichText(

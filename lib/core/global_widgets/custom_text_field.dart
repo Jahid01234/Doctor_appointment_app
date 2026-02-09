@@ -1,3 +1,4 @@
+import 'package:doctor_appointment_app/core/const/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,6 +16,7 @@ class CustomTextField extends StatelessWidget {
   final ValueChanged<String>? onChanged;
   final bool obsecureText;
   final TextInputType? textInputType;
+  final String? errorText;
 
   const CustomTextField({
     super.key,
@@ -30,6 +32,7 @@ class CustomTextField extends StatelessWidget {
     this.borderColor,
     this.readOnly,
     this.onTap,
+    this.errorText
   });
 
   @override
@@ -39,10 +42,10 @@ class CustomTextField extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         border: Border.all(
-          color: borderColor ?? Color(0xff0D0D0D).withValues(alpha: .25),
+          color: borderColor ?? const Color(0xFFF7F8F8),
           width: 1,
         ),
-        borderRadius: BorderRadius.circular(radius ?? 20),
+        borderRadius: BorderRadius.circular(radius ?? 12),
       ),
       child: Center(
         child: TextField(
@@ -55,29 +58,34 @@ class CustomTextField extends StatelessWidget {
           readOnly: readOnly ?? false,
           cursorColor: Colors.grey,
           enableInteractiveSelection: false,
-          style: GoogleFonts.inter(
+          style: GoogleFonts.poppins(
             fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: Colors.white,
+            fontWeight: FontWeight.w400,
+            color: AppColors.blackColor,
           ),
           decoration: InputDecoration(
             hintText: hinText,
             suffixIcon: suffixIcon,
             prefixIcon: prefixIcon,
             filled: true,
-            fillColor: const Color(0xFF252525).withValues(alpha: 0.4),
-            hintStyle: GoogleFonts.inter(
+            errorText: errorText,
+            fillColor: const Color(0xFFF7F8F8),
+            hintStyle: GoogleFonts.poppins(
               fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Colors.grey,
+              fontWeight: FontWeight.w400,
+              color: AppColors.greyColor,
             ),
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(12),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide(color: AppColors.lightGreenColor),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.red),
+              borderRadius: BorderRadius.circular(12),
             ),
             border: InputBorder.none,
             contentPadding: EdgeInsets.symmetric(horizontal: 16,vertical: 16),

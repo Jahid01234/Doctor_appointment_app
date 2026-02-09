@@ -1,3 +1,4 @@
+import 'package:doctor_appointment_app/core/routes/app_routes.dart';
 import 'package:doctor_appointment_app/features/onboarding/model/onboarding_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -42,7 +43,7 @@ class OnboardingController extends GetxController {
 
 
   void finishOnboarding() {
-    //Get.offNamed(AppRoutes.signUp);
+      Get.offNamed(AppRoutes.register);
   }
 
   @override
