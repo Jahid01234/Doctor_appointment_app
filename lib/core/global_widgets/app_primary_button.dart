@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 class AppPrimaryButton extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
+  final bool isLoading;
   final Widget? icon;
   final double? radius;
   final Color? bgColor;
@@ -19,6 +20,7 @@ class AppPrimaryButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.onTap,
+    this.isLoading = false,
     this.icon,
     this.bgColor,
     this.border,
@@ -36,7 +38,7 @@ class AppPrimaryButton extends StatelessWidget {
       color: Colors.transparent,
       borderRadius: BorderRadius.circular(radius ?? 12),
       child: GestureDetector(
-        onTap: onTap,
+        onTap: isLoading ? null : onTap,
         child: Container(
           height: height ?? 60,
           width: width ?? double.infinity,
@@ -44,11 +46,18 @@ class AppPrimaryButton extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(radius ?? 12),
             color: bgColor ?? AppColors.lightGreenColor,
-            border: border != null
-                ? Border.all(color: border!)
-                : null,
+            border: border != null ? Border.all(color: border!) : null,
           ),
-          child: Row(
+          child: isLoading
+              ? SizedBox(
+            height: 24,
+            width: 24,
+            child: CircularProgressIndicator(
+              color: AppColors.whiteColor,
+              strokeWidth: 2.5,
+            ),
+          )
+              : Row(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

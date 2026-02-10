@@ -7,15 +7,15 @@ import 'package:doctor_appointment_app/core/global_widgets/header_section.dart';
 import 'package:doctor_appointment_app/core/global_widgets/social_media_button.dart';
 import 'package:doctor_appointment_app/core/routes/app_routes.dart';
 import 'package:doctor_appointment_app/core/style/global_text_style.dart';
-import 'package:doctor_appointment_app/features/auth/register/controller/register_controller.dart';
+import 'package:doctor_appointment_app/features/auth/login/controller/login_controller.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class RegisterScreen extends StatelessWidget {
-  RegisterScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  LoginScreen({super.key});
 
-  final RegisterController controller = Get.put(RegisterController());
+  final LoginController controller = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
@@ -28,18 +28,8 @@ class RegisterScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: getHeight(70)),
-              HeaderSection(title: "Create an account"),
+              HeaderSection(title: "Login to your account"),
               SizedBox(height: getHeight(40)),
-              Obx(() => CustomTextField(
-                controller: controller.userNameController,
-                hinText: "Enter user name",
-                prefixIcon: const Icon(Icons.person_outline,color: AppColors.greyColor),
-                errorText: controller.userNameError!.value.isEmpty
-                    ? null
-                    : controller.userNameError!.value,
-                onChanged: controller.validateUserName,
-              )),
-              SizedBox(height: getHeight(20)),
               Obx(() => CustomTextField(
                 controller: controller.emailController,
                 hinText: "Enter email",
@@ -52,74 +42,59 @@ class RegisterScreen extends StatelessWidget {
               )),
               SizedBox(height: getHeight(20)),
               Obx(() => CustomTextField(
-                  obsecureText: controller.isPasswordHidden.value,
-                  controller: controller.passwordController,
-                  textInputType: TextInputType.text,
-                  prefixIcon: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Icon(Icons.lock_outline,color: AppColors.greyColor),
-                  ),
-                  hinText: "Enter Password",
+                obsecureText: controller.isPasswordHidden.value,
+                controller: controller.passwordController,
+                textInputType: TextInputType.text,
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Icon(Icons.lock_outline,color: AppColors.greyColor),
+                ),
+                hinText: "Enter Password",
                 errorText: controller.passwordError!.value.isEmpty
                     ? null
                     : controller.passwordError!.value,
                 onChanged: controller.validatePassword,
-                  suffixIcon: IconButton(
-                    onPressed: controller.togglePasswordVisibility,
-                    icon: Icon(
-                      controller.isPasswordHidden.value
-                          ? Icons.visibility_off_outlined
-                          : Icons.visibility_outlined,
-                      color: AppColors.greyColor,
-                    ),
+                suffixIcon: IconButton(
+                  onPressed: controller.togglePasswordVisibility,
+                  icon: Icon(
+                    controller.isPasswordHidden.value
+                        ? Icons.visibility_off_outlined
+                        : Icons.visibility_outlined,
+                    color: AppColors.greyColor,
                   ),
                 ),
               ),
-              SizedBox(height: getHeight(20)),
-              Obx(() => Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      onTap: controller.toggleCheck,
-                      child: Container(
-                        height: 20,
-                        width: 20,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(6),
-                          border: Border.all(color: AppColors.greyColor, width: 1),
-                          color: controller.isChecked.value
-                              ? AppColors.whiteColor
-                              : Colors.transparent,
-                        ),
-                        child: controller.isChecked.value
-                            ? Icon(Icons.check, size: 16, color: Colors.black)
-                            : null,
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Expanded(
-                      child: Text(
-                        "By continuing you accept our Privacy Policy and Term of Use",
-                        style: globalTextStyle(
-                          color: AppColors.greyColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
               ),
+              SizedBox(height: getHeight(20)),
+               Align(
+                  alignment: Alignment.centerRight,
+                  child: GestureDetector(
+                    onTap: () {
+                      //Get.toNamed(AppRoutes.forgetPassword);
+                    },
+                    child: Text(
+                      "Forget your password?",
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        decorationStyle: TextDecorationStyle.solid,
+                        decorationColor: AppColors.lightGreenColor,
+                        color: AppColors.lightGreenColor.withValues(alpha: 0.8),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
               SizedBox(height: getHeight(60)),
               Obx(()=>
-                AppPrimaryButton(
-                  text: "Register",
-                  textColor: AppColors.whiteColor,
-                  isLoading: controller.isLoading.value,
-                  onTap:(){
-                    controller.createAccount();
-                  },
-                ),
+                  AppPrimaryButton(
+                    text: "Login",
+                    textColor: AppColors.whiteColor,
+                    isLoading: controller.isLoading.value,
+                    onTap:(){
+                      controller.loginAccount();
+                    },
+                  ),
               ),
               SizedBox(height: getHeight(60)),
               Row(
@@ -162,7 +137,7 @@ class RegisterScreen extends StatelessWidget {
               Center(
                 child: RichText(
                   text: TextSpan(
-                    text: "Already have an account? ",
+                    text: "Create a new account? ",
                     style: globalTextStyle(
                       fontSize: 14,
                       color: AppColors.blackColor,
@@ -170,7 +145,7 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     children: [
                       TextSpan(
-                        text: "Login",
+                        text: "Register",
                         style: globalTextStyle(
                           fontSize: 15,
                           color: AppColors.lightGreenColor,
@@ -178,14 +153,13 @@ class RegisterScreen extends StatelessWidget {
                         ),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                             Get.toNamed(AppRoutes.login);
+                             Get.toNamed(AppRoutes.register);
                           },
                       ),
                     ],
                   ),
                 ),
               ),
-              SizedBox(height: getHeight(30)),
             ],
           ),
         ),

@@ -2,7 +2,6 @@ import 'package:doctor_appointment_app/core/const/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final String hinText;
@@ -37,61 +36,76 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height ?? 57,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: borderColor ?? const Color(0xFFF7F8F8),
-          width: 1,
-        ),
-        borderRadius: BorderRadius.circular(radius ?? 12),
-      ),
-      child: Center(
-        child: TextField(
-          onTap: onTap,
-          autofocus: false,
-          controller: controller,
-          obscureText: obsecureText,
-          keyboardType: textInputType,
-          onChanged: onChanged,
-          readOnly: readOnly ?? false,
-          cursorColor: Colors.grey,
-          enableInteractiveSelection: false,
-          style: GoogleFonts.poppins(
-            fontSize: 16,
-            fontWeight: FontWeight.w400,
-            color: AppColors.blackColor,
+    // Determine if there's an error
+    final hasError = errorText != null && errorText!.isNotEmpty;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          height: height ?? 57,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            border: Border.all(
+              // Show red border when error exists
+              color: hasError ? Colors.red : (borderColor ?? const Color(0xFFF7F8F8)),
+              width: 1,
+            ),
+            borderRadius: BorderRadius.circular(radius ?? 12),
           ),
-          decoration: InputDecoration(
-            hintText: hinText,
-            suffixIcon: suffixIcon,
-            prefixIcon: prefixIcon,
-            filled: true,
-            errorText: errorText,
-            fillColor: const Color(0xFFF7F8F8),
-            hintStyle: GoogleFonts.poppins(
-              fontSize: 14,
+          child: TextField(
+            onTap: onTap,
+            autofocus: false,
+            controller: controller,
+            obscureText: obsecureText,
+            keyboardType: textInputType,
+            onChanged: onChanged,
+            readOnly: readOnly ?? false,
+            cursorColor: Colors.grey,
+            enableInteractiveSelection: false,
+            style: GoogleFonts.poppins(
+              fontSize: 16,
               fontWeight: FontWeight.w400,
-              color: AppColors.greyColor,
+              color: AppColors.blackColor,
             ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(12),
+            decoration: InputDecoration(
+              hintText: hinText,
+              suffixIcon: suffixIcon,
+              prefixIcon: prefixIcon,
+              filled: true,
+              fillColor: const Color(0xFFF7F8F8),
+              hintStyle: GoogleFonts.poppins(
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+                color: AppColors.greyColor,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: hasError ? Colors.transparent  :AppColors.lightGreenColor),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: AppColors.lightGreenColor),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            border: InputBorder.none,
-            contentPadding: EdgeInsets.symmetric(horizontal: 16,vertical: 16),
           ),
         ),
-      ),
+        // Error message outside the border
+        if (hasError)
+          Padding(
+            padding: const EdgeInsets.only(left: 16, top: 6),
+            child: Text(
+              errorText!,
+              style: GoogleFonts.poppins(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                color: Colors.red,
+              ),
+            ),
+          ),
+      ],
     );
   }
 }

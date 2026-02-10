@@ -1,38 +1,20 @@
-import 'package:doctor_appointment_app/core/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 
-class RegisterController extends GetxController{
-  final TextEditingController userNameController = TextEditingController();
+class LoginController extends GetxController{
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   RxBool isPasswordHidden = true.obs;
-  RxBool isChecked = false.obs;
   RxBool isLoading = false.obs;
 
-  RxString? userNameError = RxString('');
   RxString? emailError = RxString('');
   RxString? passwordError = RxString('');
-
-  void toggleCheck() {
-    isChecked.value = !isChecked.value;
-  }
 
   void togglePasswordVisibility() {
     isPasswordHidden.value = !isPasswordHidden.value;
   }
 
-
-  void validateUserName(String value) {
-    if (value.isEmpty) {
-      userNameError!.value = "Username required";
-    } else if (value.length < 3) {
-      userNameError!.value = "Username must be at least 3 characters";
-    } else {
-      userNameError!.value = '';
-    }
-  }
 
   void validateEmail(String value) {
     if (value.isEmpty) {
@@ -54,22 +36,14 @@ class RegisterController extends GetxController{
     }
   }
 
-  Future<void> createAccount() async {
+  Future<void> loginAccount() async {
     // Validate all fields
-    validateUserName(userNameController.text);
     validateEmail(emailController.text);
     validatePassword(passwordController.text);
 
-    // Check if terms and conditions are accepted
-    if (!isChecked.value) {
-      EasyLoading.showError("Please accept the Privacy Policy and Terms of Use");
-      return;
-    }
 
     // If all validations pass
-    if (userNameError!.value.isEmpty &&
-        emailError!.value.isEmpty &&
-        passwordError!.value.isEmpty) {
+    if (emailError!.value.isEmpty && passwordError!.value.isEmpty) {
       // Start loading
       isLoading.value = true;
 
@@ -79,8 +53,7 @@ class RegisterController extends GetxController{
       // Stop loading
       isLoading.value = false;
       clearForm();
-      EasyLoading.showSuccess("Registration is successful.");
-      Get.toNamed(AppRoutes.login);
+      EasyLoading.showSuccess("Login is successful.");
 
     } else {
       EasyLoading.showError("Please fix the errors");
@@ -88,14 +61,12 @@ class RegisterController extends GetxController{
   }
 
   void clearForm(){
-    userNameController.clear();
     emailController.clear();
     passwordController.clear();
   }
 
   @override
   void dispose() {
-    userNameController.dispose();
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
