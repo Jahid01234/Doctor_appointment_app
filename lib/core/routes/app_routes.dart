@@ -1,3 +1,6 @@
+import 'package:doctor_appointment_app/features/auth/forget_password/view/forget_password_screen.dart';
+import 'package:doctor_appointment_app/features/auth/forget_password/view/otp_verify_screen.dart';
+import 'package:doctor_appointment_app/features/auth/forget_password/view/set_new_password_screen.dart';
 import 'package:doctor_appointment_app/features/auth/login/view/login_screen.dart';
 import 'package:doctor_appointment_app/features/auth/register/view/register_screen.dart';
 import 'package:doctor_appointment_app/features/onboarding/view/onboarding_screen.dart';
@@ -11,8 +14,9 @@ class AppRoutes {
   static const String bottomNavBar = '/bottomNavBar';
   static const String register = '/register';
   static const String login = '/login';
-
-
+  static const String forgetPassword = '/forgetPassword';
+  static const String otpVerify = '/otpVerify';
+  static const String setNewPassword = '/setNewPassword';
 
 
 
@@ -38,6 +42,20 @@ class AppRoutes {
       page: () => LoginScreen(),
       transition: Transition.leftToRight,
     ),
-
+    GetPage(
+      name: forgetPassword,
+      page: () => ForgetPasswordScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: otpVerify,
+      page: () => OtpVerifyScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: setNewPassword,
+      page: () => SetNewPasswordScreen(),
+      transition: Transition.leftToRight,
+    ),
   ];
 }

@@ -1,6 +1,3 @@
-import 'package:doctor_appointment_app/core/const/app_colors.dart';
-import 'package:doctor_appointment_app/core/const/app_size.dart';
-import 'package:doctor_appointment_app/core/const/icons_path.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,20 +11,7 @@ class AppBackButton extends StatelessWidget{
       onTap: (){
         Get.back();
       },
-      child: Container(
-        height: getHeight(50),
-        width: getWidth(50),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: AppColors.lightGreenColor.withValues(alpha: 0.2),
-          //color: Colors.black54.withValues(alpha: 0.90)
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          //child: Image.asset(IconsPath.backIcon,height: 20,color:Colors.white54),
-          child: Icon(Icons.arrow_back),
-        ),
-      ),
+      child: Icon(Icons.arrow_back),
     );
   }
 }
