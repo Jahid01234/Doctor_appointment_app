@@ -3,6 +3,7 @@ import 'package:doctor_appointment_app/features/auth/forget_password/view/otp_ve
 import 'package:doctor_appointment_app/features/auth/forget_password/view/set_new_password_screen.dart';
 import 'package:doctor_appointment_app/features/auth/login/view/login_screen.dart';
 import 'package:doctor_appointment_app/features/auth/register/view/register_screen.dart';
+import 'package:doctor_appointment_app/features/bottom_nav/view/bottom_nav_bar_screen.dart';
 import 'package:doctor_appointment_app/features/onboarding/view/onboarding_screen.dart';
 import 'package:doctor_appointment_app/features/splash/view/splash_screen.dart';
 import 'package:get/get.dart';
@@ -55,6 +56,11 @@ class AppRoutes {
     GetPage(
       name: setNewPassword,
       page: () => SetNewPasswordScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: bottomNavBar,
+      page: () => BottomNavBarScreen(),
       transition: Transition.leftToRight,
     ),
   ];

@@ -1,3 +1,4 @@
+import 'package:doctor_appointment_app/core/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
@@ -54,6 +55,7 @@ class LoginController extends GetxController{
       isLoading.value = false;
       clearForm();
       EasyLoading.showSuccess("Login is successful.");
+      Get.offNamed(AppRoutes.bottomNavBar);
 
     } else {
       EasyLoading.showError("Please fix the errors");

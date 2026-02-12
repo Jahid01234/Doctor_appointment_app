@@ -6,6 +6,15 @@ class IconsPath {
   static const String email = "assets/icons/mail.png";
   static const String lock = "assets/icons/lock.png";
 
-
+  static const String home = "assets/icons/home.png";
+  static const String homeAc = "assets/icons/homeAc.png";
+  static const String appointment = "assets/icons/appointment.png";
+  static const String appointmentAc = "assets/icons/appointmentAc.png";
+  static const String location = "assets/icons/location.png";
+  static const String locationAc = "assets/icons/locationAc.png";
+  static const String message = "assets/icons/message.png";
+  static const String messageAc = "assets/icons/messageAc.png";
+  static const String profile = "assets/icons/profile.png";
+  static const String profileAc = "assets/icons/profileAc.png";
 
 }
