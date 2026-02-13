@@ -1,4 +1,5 @@
 import 'package:doctor_appointment_app/core/const/icons_path.dart';
+import 'package:doctor_appointment_app/features/profile/view/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -41,6 +42,6 @@ class BottomNavBarController extends GetxController{
     Center(child: Text("Appointment.....")),
     Center(child: Text("Location.....")),
     Center(child: Text("Message.....")),
-    Center(child: Text("Profile....")),
+    ProfileScreen()
   ];
 }
