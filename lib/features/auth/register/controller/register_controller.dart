@@ -11,12 +11,14 @@ class RegisterController extends GetxController{
   RxBool isChecked = false.obs;
   RxBool isLoading = false.obs;
 
-  RxString? userNameError = RxString('');
-  RxString? emailError = RxString('');
-  RxString? passwordError = RxString('');
+  RxString? userNameError = ''.obs;
+  RxString? emailError = ''.obs;
+  RxString? passwordError = ''.obs;
+  RxString? termConditionError = ''.obs;
 
   void toggleCheck() {
     isChecked.value = !isChecked.value;
+    validTermCondition();
   }
 
   void togglePasswordVisibility() {
@@ -54,22 +56,28 @@ class RegisterController extends GetxController{
     }
   }
 
+  void validTermCondition() {
+    if (!isChecked.value) {
+      termConditionError!.value =
+      "Please accept the Privacy Policy and Terms of Use";
+    } else {
+      termConditionError!.value = '';
+    }
+  }
+
   Future<void> createAccount() async {
     // Validate all fields
     validateUserName(userNameController.text);
     validateEmail(emailController.text);
     validatePassword(passwordController.text);
-
-    // Check if terms and conditions are accepted
-    if (!isChecked.value) {
-      EasyLoading.showError("Please accept the Privacy Policy and Terms of Use");
-      return;
-    }
+    validTermCondition();
 
     // If all validations pass
     if (userNameError!.value.isEmpty &&
         emailError!.value.isEmpty &&
-        passwordError!.value.isEmpty) {
+        passwordError!.value.isEmpty &&
+       termConditionError!.value.isEmpty
+    ) {
       // Start loading
       isLoading.value = true;
 

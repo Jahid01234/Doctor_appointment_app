@@ -1,6 +1,7 @@
 import 'package:doctor_appointment_app/core/const/app_colors.dart';
 import 'package:doctor_appointment_app/core/const/app_size.dart';
 import 'package:doctor_appointment_app/core/global_widgets/app_primary_button.dart';
+import 'package:doctor_appointment_app/core/routes/app_routes.dart';
 import 'package:doctor_appointment_app/core/style/global_text_style.dart';
 import 'package:doctor_appointment_app/features/profile/controller/profile_controller.dart';
 import 'package:doctor_appointment_app/features/profile/view/widgets/profile_component_tile.dart';
@@ -29,7 +30,9 @@ class ProfileScreen extends StatelessWidget {
               ProfileComponentTile(
                 icon: Icons.person_outline,
                 title: "Edit Profile",
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(AppRoutes.editProfile);
+                },
               ),
               ProfileComponentTile(
                 icon: Icons.lock_outline,

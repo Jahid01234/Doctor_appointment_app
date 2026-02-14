@@ -67,7 +67,7 @@ class SetNewPasswordController extends GetxController{
       isLoading.value = false;
       clearForm();
       EasyLoading.showSuccess("Password reset successful");
-      //Get.toNamed(AppRoutes.otpVerify);
+      Get.offNamed(AppRoutes.login);
 
     } else {
       EasyLoading.showError("Please fix the errors");

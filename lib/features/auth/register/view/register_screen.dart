@@ -2,6 +2,7 @@ import 'package:doctor_appointment_app/core/const/app_colors.dart';
 import 'package:doctor_appointment_app/core/const/app_size.dart';
 import 'package:doctor_appointment_app/core/const/icons_path.dart';
 import 'package:doctor_appointment_app/core/global_widgets/app_primary_button.dart';
+import 'package:doctor_appointment_app/core/global_widgets/custom_field_title.dart';
 import 'package:doctor_appointment_app/core/global_widgets/custom_text_field.dart';
 import 'package:doctor_appointment_app/core/global_widgets/header_section.dart';
 import 'package:doctor_appointment_app/core/global_widgets/social_media_button.dart';
@@ -30,40 +31,57 @@ class RegisterScreen extends StatelessWidget {
               SizedBox(height: getHeight(70)),
               HeaderSection(title: "Create an account"),
               SizedBox(height: getHeight(40)),
-              Obx(() => CustomTextField(
-                controller: controller.userNameController,
-                hinText: "Enter user name",
-                prefixIcon: const Icon(Icons.person_outline,color: AppColors.greyColor),
-                errorText: controller.userNameError!.value.isEmpty
-                    ? null
-                    : controller.userNameError!.value,
-                onChanged: controller.validateUserName,
-              )),
+              CustomFieldTitle(title: "User Name"),
+              SizedBox(height: 4),
+              Obx(
+                () => CustomTextField(
+                  controller: controller.userNameController,
+                  hinText: "Enter user name",
+                  prefixIcon: const Icon(
+                    Icons.person_outline,
+                    color: AppColors.greyColor,
+                  ),
+                  errorText: controller.userNameError!.value.isEmpty
+                      ? null
+                      : controller.userNameError!.value,
+                  onChanged: controller.validateUserName,
+                ),
+              ),
               SizedBox(height: getHeight(20)),
-              Obx(() => CustomTextField(
-                controller: controller.emailController,
-                hinText: "Enter email",
-                textInputType: TextInputType.emailAddress,
-                prefixIcon: const Icon(Icons.mail_outline,color: AppColors.greyColor),
-                errorText: controller.emailError!.value.isEmpty
-                    ? null
-                    : controller.emailError!.value,
-                onChanged: controller.validateEmail,
-              )),
+              CustomFieldTitle(title: "Email"),
+              SizedBox(height: 4),
+              Obx(
+                () => CustomTextField(
+                  controller: controller.emailController,
+                  hinText: "Enter email",
+                  textInputType: TextInputType.emailAddress,
+                  prefixIcon: const Icon(
+                    Icons.mail_outline,
+                    color: AppColors.greyColor,
+                  ),
+                  errorText: controller.emailError!.value.isEmpty
+                      ? null
+                      : controller.emailError!.value,
+                  onChanged: controller.validateEmail,
+                ),
+              ),
               SizedBox(height: getHeight(20)),
-              Obx(() => CustomTextField(
+              CustomFieldTitle(title: "Password"),
+              SizedBox(height: 4),
+              Obx(
+                () => CustomTextField(
                   obsecureText: controller.isPasswordHidden.value,
                   controller: controller.passwordController,
                   textInputType: TextInputType.text,
                   prefixIcon: Padding(
                     padding: const EdgeInsets.all(12.0),
-                    child: Icon(Icons.lock_outline,color: AppColors.greyColor),
+                    child: Icon(Icons.lock_outline, color: AppColors.greyColor),
                   ),
                   hinText: "Enter Password",
-                errorText: controller.passwordError!.value.isEmpty
-                    ? null
-                    : controller.passwordError!.value,
-                onChanged: controller.validatePassword,
+                  errorText: controller.passwordError!.value.isEmpty
+                      ? null
+                      : controller.passwordError!.value,
+                  onChanged: controller.validatePassword,
                   suffixIcon: IconButton(
                     onPressed: controller.togglePasswordVisibility,
                     icon: Icon(
@@ -76,47 +94,72 @@ class RegisterScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: getHeight(20)),
-              Obx(() => Row(
+              Obx(
+                () => Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    GestureDetector(
-                      onTap: controller.toggleCheck,
-                      child: Container(
-                        height: 20,
-                        width: 20,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(6),
-                          border: Border.all(color: AppColors.greyColor, width: 1),
-                          color: controller.isChecked.value
-                              ? AppColors.whiteColor
-                              : Colors.transparent,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        GestureDetector(
+                          onTap: controller.toggleCheck,
+                          child: Container(
+                            height: 20,
+                            width: 20,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(6),
+                              border: Border.all(
+                                color: AppColors.greyColor,
+                                width: 1,
+                              ),
+                              color: controller.isChecked.value
+                                  ? AppColors.whiteColor
+                                  : Colors.transparent,
+                            ),
+                            child: controller.isChecked.value
+                                ? const Icon(
+                                    Icons.check,
+                                    size: 16,
+                                    color: Colors.black,
+                                  )
+                                : null,
+                          ),
                         ),
-                        child: controller.isChecked.value
-                            ? Icon(Icons.check, size: 16, color: Colors.black)
-                            : null,
-                      ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Text(
+                            "By continuing you accept our Privacy Policy and Term of Use",
+                            style: globalTextStyle(
+                              color: AppColors.greyColor,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    SizedBox(width: 10),
-                    Expanded(
-                      child: Text(
-                        "By continuing you accept our Privacy Policy and Term of Use",
-                        style: globalTextStyle(
-                          color: AppColors.greyColor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
+
+                    if (controller.termConditionError!.value.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4, left: 15),
+                        child: Text(
+                          controller.termConditionError!.value,
+                          style: globalTextStyle(
+                            color: Colors.red,
+                            fontSize: 12,
+                          ),
                         ),
                       ),
-                    ),
                   ],
                 ),
               ),
               SizedBox(height: getHeight(60)),
-              Obx(()=>
-                AppPrimaryButton(
+              Obx(
+                () => AppPrimaryButton(
                   text: "Register",
                   textColor: AppColors.whiteColor,
                   isLoading: controller.isLoading.value,
-                  onTap:(){
+                  onTap: () {
                     controller.createAccount();
                   },
                 ),
@@ -178,7 +221,7 @@ class RegisterScreen extends StatelessWidget {
                         ),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                             Get.toNamed(AppRoutes.login);
+                            Get.offNamed(AppRoutes.login);
                           },
                       ),
                     ],

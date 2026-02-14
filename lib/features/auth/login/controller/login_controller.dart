@@ -9,8 +9,8 @@ class LoginController extends GetxController{
   RxBool isPasswordHidden = true.obs;
   RxBool isLoading = false.obs;
 
-  RxString? emailError = RxString('');
-  RxString? passwordError = RxString('');
+  RxString? emailError = ''.obs;
+  RxString? passwordError = ''.obs;
 
   void togglePasswordVisibility() {
     isPasswordHidden.value = !isPasswordHidden.value;

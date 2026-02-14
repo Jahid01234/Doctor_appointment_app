@@ -2,6 +2,7 @@ import 'package:doctor_appointment_app/core/const/app_colors.dart';
 import 'package:doctor_appointment_app/core/const/app_size.dart';
 import 'package:doctor_appointment_app/core/const/icons_path.dart';
 import 'package:doctor_appointment_app/core/global_widgets/app_primary_button.dart';
+import 'package:doctor_appointment_app/core/global_widgets/custom_field_title.dart';
 import 'package:doctor_appointment_app/core/global_widgets/custom_text_field.dart';
 import 'package:doctor_appointment_app/core/global_widgets/header_section.dart';
 import 'package:doctor_appointment_app/core/global_widgets/social_media_button.dart';
@@ -30,6 +31,8 @@ class LoginScreen extends StatelessWidget {
               SizedBox(height: getHeight(70)),
               HeaderSection(title: "Login to your account"),
               SizedBox(height: getHeight(40)),
+              CustomFieldTitle(title: "Email"),
+              SizedBox(height: 4),
               Obx(() => CustomTextField(
                 controller: controller.emailController,
                 hinText: "Enter email",
@@ -41,6 +44,8 @@ class LoginScreen extends StatelessWidget {
                 onChanged: controller.validateEmail,
               )),
               SizedBox(height: getHeight(20)),
+              CustomFieldTitle(title: "Password"),
+              SizedBox(height: 4),
               Obx(() => CustomTextField(
                 obsecureText: controller.isPasswordHidden.value,
                 controller: controller.passwordController,
@@ -153,7 +158,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                             Get.toNamed(AppRoutes.register);
+                             Get.offNamed(AppRoutes.register);
                           },
                       ),
                     ],

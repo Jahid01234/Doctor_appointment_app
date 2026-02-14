@@ -2,6 +2,7 @@ import 'package:doctor_appointment_app/core/const/app_colors.dart';
 import 'package:doctor_appointment_app/core/const/app_size.dart';
 import 'package:doctor_appointment_app/core/global_widgets/app_back_button.dart';
 import 'package:doctor_appointment_app/core/global_widgets/app_primary_button.dart';
+import 'package:doctor_appointment_app/core/global_widgets/custom_field_title.dart';
 import 'package:doctor_appointment_app/core/global_widgets/custom_text_field.dart';
 import 'package:doctor_appointment_app/core/global_widgets/header_section.dart';
 import 'package:doctor_appointment_app/core/style/global_text_style.dart';
@@ -39,6 +40,8 @@ class ForgetPasswordScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: getHeight(60)),
+              CustomFieldTitle(title: "Email"),
+              SizedBox(height: 4),
               Obx(() => CustomTextField(
                 controller: controller.emailEditingController,
                 hinText: "Enter email",
