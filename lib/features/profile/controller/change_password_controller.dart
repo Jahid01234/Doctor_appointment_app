@@ -3,12 +3,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 
-class SetNewPasswordController extends GetxController{
+class ChangePasswordController extends GetxController{
+  final TextEditingController currentPasswordController = TextEditingController();
   final TextEditingController newPasswordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
   RxBool isLoading = false.obs;
-  var isNewPassword = true.obs;
-  var isConfirmPassword = true.obs;
+
+  RxBool isCurrentPassword = true.obs;
+  RxBool isNewPassword = true.obs;
+  RxBool isConfirmPassword = true.obs;
+
+  void toggleCurrentPassword(){
+    isCurrentPassword.value = !isCurrentPassword.value;
+  }
 
   void toggleNewPassword(){
     isNewPassword.value = !isNewPassword.value;
@@ -19,18 +26,29 @@ class SetNewPasswordController extends GetxController{
   }
 
 
-  RxString? passwordError = RxString('');
+  RxString? currentPasswordError = RxString('');
+  RxString? newPasswordError = RxString('');
   RxString? confirmPasswordError = RxString('');
 
 
 
-  void validatePassword(String value) {
+  void validateCurrentPassword(String value) {
     if (value.isEmpty) {
-      passwordError!.value = "Password required";
+      currentPasswordError!.value = "Current password required";
     } else if (value.length < 8) {
-      passwordError!.value = "Minimum 8 characters";
+      currentPasswordError!.value = "Minimum 8 characters";
     } else {
-      passwordError!.value = '';
+      currentPasswordError!.value = '';
+    }
+  }
+
+  void validateNewPassword(String value) {
+    if (value.isEmpty) {
+      newPasswordError!.value = "New password required";
+    } else if (value.length < 8) {
+      newPasswordError!.value = "Minimum 8 characters";
+    } else {
+      newPasswordError!.value = '';
     }
   }
 
@@ -49,14 +67,19 @@ class SetNewPasswordController extends GetxController{
 
 
 
-  Future<void> setNewPassword() async {
+  Future<void> changePassword() async {
     // Validate all fields
-    validatePassword(newPasswordController.text);
+    validateCurrentPassword(currentPasswordController.text);
+    validateNewPassword(newPasswordController.text);
     validateConfirmPassword(confirmPasswordController.text);
 
 
     // If all validations pass
-    if (passwordError!.value.isEmpty && confirmPasswordError!.value.isEmpty) {
+    if (
+    currentPasswordError!.value.isEmpty &&
+        newPasswordError!.value.isEmpty &&
+        confirmPasswordError!.value.isEmpty
+    ) {
       // Start loading
       isLoading.value = true;
 
@@ -66,8 +89,8 @@ class SetNewPasswordController extends GetxController{
       // Stop loading
       isLoading.value = false;
       clearForm();
-      EasyLoading.showSuccess("Password reset successful");
-      Get.offNamed(AppRoutes.bottomNavBar);
+      EasyLoading.showSuccess("Password change successful");
+      Get.offNamed(AppRoutes.login);
 
     } else {
       EasyLoading.showError("Please fix the errors");
@@ -75,12 +98,14 @@ class SetNewPasswordController extends GetxController{
   }
 
   void clearForm(){
+    currentPasswordController.clear();
     newPasswordController.clear();
     confirmPasswordController.clear();
   }
 
   @override
   void dispose() {
+    currentPasswordController.clear();
     newPasswordController.dispose();
     confirmPasswordController.dispose();
     super.dispose();

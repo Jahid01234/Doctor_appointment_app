@@ -5,6 +5,7 @@ import 'package:doctor_appointment_app/features/auth/login/view/login_screen.dar
 import 'package:doctor_appointment_app/features/auth/register/view/register_screen.dart';
 import 'package:doctor_appointment_app/features/bottom_nav/view/bottom_nav_bar_screen.dart';
 import 'package:doctor_appointment_app/features/onboarding/view/onboarding_screen.dart';
+import 'package:doctor_appointment_app/features/profile/view/change_password_screen.dart';
 import 'package:doctor_appointment_app/features/profile/view/edit_profile_screen.dart';
 import 'package:doctor_appointment_app/features/splash/view/splash_screen.dart';
 import 'package:get/get.dart';
@@ -20,6 +21,7 @@ class AppRoutes {
   static const String otpVerify = '/otpVerify';
   static const String setNewPassword = '/setNewPassword';
   static const String editProfile = '/editProfile';
+  static const String changePassword = '/changePassword';
 
 
 
@@ -68,6 +70,11 @@ class AppRoutes {
     GetPage(
       name: editProfile,
       page: () => EditProfileScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: changePassword,
+      page: () => ChangePasswordScreen(),
       transition: Transition.leftToRight,
     ),
   ];

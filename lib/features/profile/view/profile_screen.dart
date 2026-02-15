@@ -37,7 +37,9 @@ class ProfileScreen extends StatelessWidget {
               ProfileComponentTile(
                 icon: Icons.lock_outline,
                 title: "Change Password",
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(AppRoutes.changePassword);
+                },
               ),
               ProfileComponentTile(
                 icon: Icons.notifications_none_sharp,
