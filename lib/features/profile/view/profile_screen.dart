@@ -44,7 +44,9 @@ class ProfileScreen extends StatelessWidget {
               ProfileComponentTile(
                 icon: Icons.notifications_none_sharp,
                 title: "Notification",
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(AppRoutes.notification);
+                },
               ),
               ProfileComponentTile(
                 icon: Icons.payment_outlined,
@@ -54,7 +56,9 @@ class ProfileScreen extends StatelessWidget {
               ProfileComponentTile(
                 icon: Icons.security,
                 title: "Security",
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(AppRoutes.security);
+                },
               ),
               ProfileComponentTile(
                 icon: Icons.language,

@@ -4,9 +4,11 @@ import 'package:doctor_appointment_app/features/auth/forget_password/view/set_ne
 import 'package:doctor_appointment_app/features/auth/login/view/login_screen.dart';
 import 'package:doctor_appointment_app/features/auth/register/view/register_screen.dart';
 import 'package:doctor_appointment_app/features/bottom_nav/view/bottom_nav_bar_screen.dart';
+import 'package:doctor_appointment_app/features/notification/view/notification_screen.dart';
 import 'package:doctor_appointment_app/features/onboarding/view/onboarding_screen.dart';
 import 'package:doctor_appointment_app/features/profile/view/change_password_screen.dart';
 import 'package:doctor_appointment_app/features/profile/view/edit_profile_screen.dart';
+import 'package:doctor_appointment_app/features/security/view/security_screen.dart';
 import 'package:doctor_appointment_app/features/splash/view/splash_screen.dart';
 import 'package:get/get.dart';
 
@@ -22,6 +24,8 @@ class AppRoutes {
   static const String setNewPassword = '/setNewPassword';
   static const String editProfile = '/editProfile';
   static const String changePassword = '/changePassword';
+  static const String notification = '/notification';
+  static const String security = '/security';
 
 
 
@@ -75,6 +79,16 @@ class AppRoutes {
     GetPage(
       name: changePassword,
       page: () => ChangePasswordScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: notification,
+      page: () => NotificationScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: security,
+      page: () => SecurityScreen(),
       transition: Transition.leftToRight,
     ),
   ];
