@@ -17,4 +17,9 @@ class IconsPath {
   static const String profile = "assets/icons/profile.png";
   static const String profileAc = "assets/icons/profileAc.png";
 
+  static const String stripe  = "assets/icons/stripe.png";
+  static const String paypal  = "assets/icons/paypal.png";
+  static const String visa = "assets/icons/visa.png";
+  static const String payoneer = "assets/icons/payoneer.png";
+
 }

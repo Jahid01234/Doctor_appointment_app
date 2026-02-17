@@ -51,7 +51,9 @@ class ProfileScreen extends StatelessWidget {
               ProfileComponentTile(
                 icon: Icons.payment_outlined,
                 title: "Payment",
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(AppRoutes.payment);
+                },
               ),
               ProfileComponentTile(
                 icon: Icons.security,
@@ -78,7 +80,9 @@ class ProfileScreen extends StatelessWidget {
               ProfileComponentTile(
                 icon: Icons.help_outline,
                 title: "Help Center",
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(AppRoutes.helpCenter);
+                },
               ),
               ProfileComponentTile(
                 icon: Icons.description_outlined,
@@ -127,15 +131,6 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: getHeight(20)),
-              Container(
-                padding: EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  color: Colors.red.withValues(alpha: 0.1),
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(Icons.logout, color: Colors.red, size: 20),
-              ),
-              SizedBox(height: getHeight(10)),
               Text(
                 "Logout",
                 style: globalTextStyle(
