@@ -1,15 +1,17 @@
+import 'package:get/get.dart';
+
 class FaqModel {
   final String question;
   final String answer;
   final String category;
-  bool isExpanded;
+  RxBool isExpanded;
 
   FaqModel({
     required this.question,
     required this.answer,
     required this.category,
-    this.isExpanded = false,
-  });
+    bool isExpanded = false,
+  }) : isExpanded = isExpanded.obs;
 }
 
 final List<FaqModel> allFaqsModel = [

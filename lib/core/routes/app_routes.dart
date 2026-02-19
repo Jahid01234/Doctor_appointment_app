@@ -5,6 +5,8 @@ import 'package:doctor_appointment_app/features/auth/login/view/login_screen.dar
 import 'package:doctor_appointment_app/features/auth/register/view/register_screen.dart';
 import 'package:doctor_appointment_app/features/bottom_nav/view/bottom_nav_bar_screen.dart';
 import 'package:doctor_appointment_app/features/help_center/view/help_center_screen.dart';
+import 'package:doctor_appointment_app/features/help_center/view/privacy_policy_screen.dart';
+import 'package:doctor_appointment_app/features/help_center/view/terms_and_conditions_screen.dart';
 import 'package:doctor_appointment_app/features/notification/view/notification_screen.dart';
 import 'package:doctor_appointment_app/features/onboarding/view/onboarding_screen.dart';
 import 'package:doctor_appointment_app/features/payment/view/payment_screen.dart';
@@ -30,6 +32,8 @@ class AppRoutes {
   static const String security = '/security';
   static const String payment = '/payment';
   static const String helpCenter = '/helpCenter';
+  static const String termsAndConditions = '/termsAndConditions';
+  static const String privacyPolicy = '/privacyPolicy';
 
 
 
@@ -103,6 +107,16 @@ class AppRoutes {
     GetPage(
       name: helpCenter,
       page: () => HelpCenterScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: termsAndConditions,
+      page: () => TermsAndConditionsScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: privacyPolicy,
+      page: () => PrivacyPolicyScreen(),
       transition: Transition.leftToRight,
     ),
   ];

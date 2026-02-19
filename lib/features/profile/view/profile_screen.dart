@@ -87,7 +87,16 @@ class ProfileScreen extends StatelessWidget {
               ProfileComponentTile(
                 icon: Icons.description_outlined,
                 title: "Terms and Conditions",
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(AppRoutes.termsAndConditions);
+                },
+              ),
+              ProfileComponentTile(
+                icon: Icons.privacy_tip_outlined,
+                title: "Privacy Policy",
+                onTap: () {
+                  Get.toNamed(AppRoutes.privacyPolicy);
+                }
               ),
               ProfileComponentTile(
                 icon: Icons.logout,
