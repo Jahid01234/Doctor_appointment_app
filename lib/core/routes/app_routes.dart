@@ -5,8 +5,8 @@ import 'package:doctor_appointment_app/features/auth/login/view/login_screen.dar
 import 'package:doctor_appointment_app/features/auth/register/view/register_screen.dart';
 import 'package:doctor_appointment_app/features/bottom_nav/view/bottom_nav_bar_screen.dart';
 import 'package:doctor_appointment_app/features/help_center/view/help_center_screen.dart';
-import 'package:doctor_appointment_app/features/help_center/view/privacy_policy_screen.dart';
-import 'package:doctor_appointment_app/features/help_center/view/terms_and_conditions_screen.dart';
+import 'package:doctor_appointment_app/features/privacy_policy/privacy_policy_screen.dart';
+import 'package:doctor_appointment_app/features/terms_conditions/terms_and_conditions_screen.dart';
 import 'package:doctor_appointment_app/features/notification/view/notification_screen.dart';
 import 'package:doctor_appointment_app/features/onboarding/view/onboarding_screen.dart';
 import 'package:doctor_appointment_app/features/payment/view/payment_screen.dart';
