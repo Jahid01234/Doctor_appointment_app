@@ -117,19 +117,19 @@ class ChatAppBarWidget extends StatelessWidget
       actions: [
         IconButton(
           icon: const Icon(
+            Icons.call_outlined,
+            color:  AppColors.lightGreenColor,
+            size: 22,
+          ),
+          onPressed: onCallTap,
+        ),
+        IconButton(
+          icon: const Icon(
               Icons.videocam_outlined,
               color: AppColors.lightGreenColor,
               size: 24,
           ),
           onPressed: onVideoCallTap,
-        ),
-        IconButton(
-          icon: const Icon(
-              Icons.call_outlined,
-              color:  AppColors.lightGreenColor,
-              size: 22,
-          ),
-          onPressed: onCallTap,
         ),
       ],
     );

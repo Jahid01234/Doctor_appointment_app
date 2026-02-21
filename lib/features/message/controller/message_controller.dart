@@ -122,6 +122,14 @@ class MessageController extends GetxController {
 
   void onSearch(String query) => searchQuery.value = query;
 
+  void markAsRead(String chatId) {
+    final index = chats.indexWhere((c) => c.id == chatId);
+    if (index != -1) {
+      chats[index] = chats[index].copyWith(unreadCount: 0);
+      filterChats();
+    }
+  }
+
   String formatTimestamp(DateTime timestamp) {
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);

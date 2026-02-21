@@ -19,8 +19,9 @@ class ChatTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: (){
+        controller.markAsRead(chat.id);
         Get.to(
               () => ChatDetailScreen(doctor: chat),
           binding: BindingsBuilder(() {
@@ -30,12 +31,10 @@ class ChatTile extends StatelessWidget {
           transition: Transition.cupertino,
         );
       },
-      borderRadius: BorderRadius.circular(12),
       child: Padding(
         padding:
         const EdgeInsets.symmetric(horizontal: 0, vertical: 12),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             _buildAvatar(),
             const SizedBox(width: 14),

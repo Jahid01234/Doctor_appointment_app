@@ -5,6 +5,9 @@ import 'package:doctor_appointment_app/features/auth/login/view/login_screen.dar
 import 'package:doctor_appointment_app/features/auth/register/view/register_screen.dart';
 import 'package:doctor_appointment_app/features/bottom_nav/view/bottom_nav_bar_screen.dart';
 import 'package:doctor_appointment_app/features/help_center/view/help_center_screen.dart';
+import 'package:doctor_appointment_app/features/language/view/language_screen.dart';
+import 'package:doctor_appointment_app/features/message/view/audio_call_screen.dart';
+import 'package:doctor_appointment_app/features/message/view/video_call_screen.dart';
 import 'package:doctor_appointment_app/features/privacy_policy/privacy_policy_screen.dart';
 import 'package:doctor_appointment_app/features/terms_conditions/terms_and_conditions_screen.dart';
 import 'package:doctor_appointment_app/features/notification/view/notification_screen.dart';
@@ -34,6 +37,9 @@ class AppRoutes {
   static const String helpCenter = '/helpCenter';
   static const String termsAndConditions = '/termsAndConditions';
   static const String privacyPolicy = '/privacyPolicy';
+  static const String audioCall = '/audioCall';
+  static const String videoCall = '/videoCall';
+  static const String language = '/language';
 
 
 
@@ -117,6 +123,21 @@ class AppRoutes {
     GetPage(
       name: privacyPolicy,
       page: () => PrivacyPolicyScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: audioCall,
+      page: () => AudioCallScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: videoCall,
+      page: () => VideoCallScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: language,
+      page: () => LanguageScreen(),
       transition: Transition.leftToRight,
     ),
   ];

@@ -3,6 +3,7 @@ import 'package:doctor_appointment_app/core/const/app_size.dart';
 import 'package:doctor_appointment_app/core/global_widgets/app_primary_button.dart';
 import 'package:doctor_appointment_app/core/routes/app_routes.dart';
 import 'package:doctor_appointment_app/core/style/global_text_style.dart';
+import 'package:doctor_appointment_app/features/language/controller/language_controller.dart';
 import 'package:doctor_appointment_app/features/profile/controller/profile_controller.dart';
 import 'package:doctor_appointment_app/features/profile/view/widgets/profile_component_tile.dart';
 import 'package:doctor_appointment_app/features/profile/view/widgets/profile_header_section.dart';
@@ -13,6 +14,9 @@ class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
 
   final ProfileController controller = Get.put(ProfileController());
+  final LanguageController languageController = Get.put(LanguageController());
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -62,11 +66,14 @@ class ProfileScreen extends StatelessWidget {
                   Get.toNamed(AppRoutes.security);
                 },
               ),
-              ProfileComponentTile(
+              Obx(() => ProfileComponentTile(
                 icon: Icons.language,
                 title: "Language",
-                trailingText: "English (US)",
-                onTap: () {},
+                trailingText: languageController.selectedLanguage.value,
+                onTap: () {
+                  Get.toNamed(AppRoutes.language);
+                },
+               ),
               ),
               Obx(
                 () => ProfileComponentTile(

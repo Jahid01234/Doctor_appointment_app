@@ -1,3 +1,4 @@
+import 'package:doctor_appointment_app/core/routes/app_routes.dart';
 import 'package:doctor_appointment_app/features/message/controller/chat_detail_controller.dart';
 import 'package:doctor_appointment_app/features/message/model/message_model.dart';
 import 'package:doctor_appointment_app/features/message/view/widgets/build_input_bar.dart';
@@ -25,10 +26,10 @@ class ChatDetailScreen extends StatelessWidget {
         isOnline: doctor.isOnline,
         subtitle: doctor.specialty,
         onCallTap: () {
-          // call action
+          Get.toNamed(AppRoutes.audioCall,arguments: doctor);
         },
         onVideoCallTap: () {
-          // video call action
+          Get.toNamed(AppRoutes.videoCall,arguments: doctor );
         },
       ),
       body: Column(
