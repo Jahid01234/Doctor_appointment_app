@@ -21,5 +21,6 @@ class IconsPath {
   static const String paypal  = "assets/icons/paypal.png";
   static const String visa = "assets/icons/visa.png";
   static const String payoneer = "assets/icons/payoneer.png";
+  static const String notification = "assets/icons/notification.png";
 
 }

@@ -1,122 +1,132 @@
 import 'package:doctor_appointment_app/core/const/app_colors.dart';
 import 'package:doctor_appointment_app/core/const/app_size.dart';
+import 'package:doctor_appointment_app/core/global_widgets/app_back_button.dart';
 import 'package:doctor_appointment_app/core/global_widgets/app_primary_button.dart';
 import 'package:doctor_appointment_app/core/routes/app_routes.dart';
 import 'package:doctor_appointment_app/core/style/global_text_style.dart';
 import 'package:doctor_appointment_app/features/language/controller/language_controller.dart';
 import 'package:doctor_appointment_app/features/profile/controller/profile_controller.dart';
 import 'package:doctor_appointment_app/features/profile/view/widgets/profile_component_tile.dart';
-import 'package:doctor_appointment_app/features/profile/view/widgets/profile_header_section.dart';
+import 'package:doctor_appointment_app/features/profile/view/widgets/custom_info_section.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProfileScreen extends StatelessWidget {
-  ProfileScreen({super.key});
+    ProfileScreen({super.key});
 
   final ProfileController controller = Get.put(ProfileController());
   final LanguageController languageController = Get.put(LanguageController());
-
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: getHeight(60)),
-              ProfileHeaderSection(),
-              SizedBox(height: getHeight(30)),
-              Divider(color: AppColors.greyColor.withValues(alpha: 0.3)),
-              SizedBox(height: getHeight(20)),
-              ProfileComponentTile(
-                icon: Icons.person_outline,
-                title: "Edit Profile",
-                onTap: () {
-                  Get.toNamed(AppRoutes.editProfile);
-                },
-              ),
-              ProfileComponentTile(
-                icon: Icons.lock_outline,
-                title: "Change Password",
-                onTap: () {
-                  Get.toNamed(AppRoutes.changePassword);
-                },
-              ),
-              ProfileComponentTile(
-                icon: Icons.notifications_none_sharp,
-                title: "Notification",
-                onTap: () {
-                  Get.toNamed(AppRoutes.notification);
-                },
-              ),
-              ProfileComponentTile(
-                icon: Icons.payment_outlined,
-                title: "Payment",
-                onTap: () {
-                  Get.toNamed(AppRoutes.payment);
-                },
-              ),
-              ProfileComponentTile(
-                icon: Icons.security,
-                title: "Security",
-                onTap: () {
-                  Get.toNamed(AppRoutes.security);
-                },
-              ),
-              Obx(() => ProfileComponentTile(
-                icon: Icons.language,
-                title: "Language",
-                trailingText: languageController.selectedLanguage.value,
-                onTap: () {
-                  Get.toNamed(AppRoutes.language);
-                },
-               ),
-              ),
-              Obx(
-                () => ProfileComponentTile(
-                  icon: Icons.dark_mode_outlined,
-                  title: "Dark Mode",
-                  showSwitch: true,
-                  switchValue: controller.isDarkMode.value,
-                  onSwitchChanged: controller.toggleSwitch,
+        child: Column(
+          children: [
+            SizedBox(height: getHeight(60)),
+            AppBackButton(
+              title: "Profile",
+              showBackButton: Get.key.currentState!.canPop(),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(height: getHeight(60)),
+                    CustomInfoSection(),
+                    SizedBox(height: getHeight(30)),
+                    Divider(color: AppColors.greyColor.withValues(alpha: 0.3)),
+                    SizedBox(height: getHeight(20)),
+                    ProfileComponentTile(
+                      icon: Icons.person_outline,
+                      title: "Edit Profile",
+                      onTap: () {
+                        Get.toNamed(AppRoutes.editProfile);
+                      },
+                    ),
+                    ProfileComponentTile(
+                      icon: Icons.lock_outline,
+                      title: "Change Password",
+                      onTap: () {
+                        Get.toNamed(AppRoutes.changePassword);
+                      },
+                    ),
+                    ProfileComponentTile(
+                      icon: Icons.notifications_none_sharp,
+                      title: "Notification",
+                      onTap: () {
+                        Get.toNamed(AppRoutes.notification);
+                      },
+                    ),
+                    ProfileComponentTile(
+                      icon: Icons.payment_outlined,
+                      title: "Payment",
+                      onTap: () {
+                        Get.toNamed(AppRoutes.payment);
+                      },
+                    ),
+                    ProfileComponentTile(
+                      icon: Icons.security,
+                      title: "Security",
+                      onTap: () {
+                        Get.toNamed(AppRoutes.security);
+                      },
+                    ),
+                    Obx(() => ProfileComponentTile(
+                      icon: Icons.language,
+                      title: "Language",
+                      trailingText: languageController.selectedLanguage.value,
+                      onTap: () {
+                        Get.toNamed(AppRoutes.language);
+                      },
+                     ),
+                    ),
+                    Obx(
+                      () => ProfileComponentTile(
+                        icon: Icons.dark_mode_outlined,
+                        title: "Dark Mode",
+                        showSwitch: true,
+                        switchValue: controller.isDarkMode.value,
+                        onSwitchChanged: controller.toggleSwitch,
+                      ),
+                    ),
+                    ProfileComponentTile(
+                      icon: Icons.help_outline,
+                      title: "Help Center",
+                      onTap: () {
+                        Get.toNamed(AppRoutes.helpCenter);
+                      },
+                    ),
+                    ProfileComponentTile(
+                      icon: Icons.description_outlined,
+                      title: "Terms and Conditions",
+                      onTap: () {
+                        Get.toNamed(AppRoutes.termsAndConditions);
+                      },
+                    ),
+                    ProfileComponentTile(
+                      icon: Icons.privacy_tip_outlined,
+                      title: "Privacy Policy",
+                      onTap: () {
+                        Get.toNamed(AppRoutes.privacyPolicy);
+                      }
+                    ),
+                    ProfileComponentTile(
+                      icon: Icons.logout,
+                      iconColor: Colors.red,
+                      title: "Logout",
+                      titleColor: Colors.red,
+                      onTap: () {
+                        logoutBottomSheet(context);
+                      },
+                    ),
+                    SizedBox(height: getHeight(30)),
+                  ],
                 ),
               ),
-              ProfileComponentTile(
-                icon: Icons.help_outline,
-                title: "Help Center",
-                onTap: () {
-                  Get.toNamed(AppRoutes.helpCenter);
-                },
-              ),
-              ProfileComponentTile(
-                icon: Icons.description_outlined,
-                title: "Terms and Conditions",
-                onTap: () {
-                  Get.toNamed(AppRoutes.termsAndConditions);
-                },
-              ),
-              ProfileComponentTile(
-                icon: Icons.privacy_tip_outlined,
-                title: "Privacy Policy",
-                onTap: () {
-                  Get.toNamed(AppRoutes.privacyPolicy);
-                }
-              ),
-              ProfileComponentTile(
-                icon: Icons.logout,
-                iconColor: Colors.red,
-                title: "Logout",
-                titleColor: Colors.red,
-                onTap: () {
-                  logoutBottomSheet(context);
-                },
-              ),
-              SizedBox(height: getHeight(30)),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -43,6 +43,7 @@ dependencies:
   image_picker: ^1.2.1
   url_launcher: ^6.3.2
   cached_network_image: ^3.3.1
+  carousel_slider: ^5.1.2
 
 dev_dependencies:
   flutter_test:

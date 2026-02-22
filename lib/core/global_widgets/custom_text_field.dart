@@ -48,7 +48,9 @@ class CustomTextField extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(
               // Show red border when error exists
-              color: hasError ? Colors.red : (borderColor ?? const Color(0xFFF7F8F8)),
+              color: hasError
+                        ? Colors.red
+                        : (borderColor ?? const Color(0xFFF7F8F8)),
               width: 1,
             ),
             borderRadius: BorderRadius.circular(radius ?? 12),

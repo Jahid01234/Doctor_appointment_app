@@ -1,4 +1,5 @@
 import 'package:doctor_appointment_app/core/const/icons_path.dart';
+import 'package:doctor_appointment_app/features/home/view/home_screen.dart';
 import 'package:doctor_appointment_app/features/message/view/message_screen.dart';
 import 'package:doctor_appointment_app/features/profile/view/profile_screen.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class BottomNavBarController extends GetxController{
   }
 
   final List<Widget> pages = [
-    Center(child: Text("Home....")),
+    HomeScreen(),
     Center(child: Text("Appointment.....")),
     Center(child: Text("Location.....")),
     MessageScreen(),

@@ -5,10 +5,12 @@ import 'package:doctor_appointment_app/features/auth/login/view/login_screen.dar
 import 'package:doctor_appointment_app/features/auth/register/view/register_screen.dart';
 import 'package:doctor_appointment_app/features/bottom_nav/view/bottom_nav_bar_screen.dart';
 import 'package:doctor_appointment_app/features/help_center/view/help_center_screen.dart';
+import 'package:doctor_appointment_app/features/home/view/home_screen.dart';
 import 'package:doctor_appointment_app/features/language/view/language_screen.dart';
 import 'package:doctor_appointment_app/features/message/view/audio_call_screen.dart';
 import 'package:doctor_appointment_app/features/message/view/video_call_screen.dart';
 import 'package:doctor_appointment_app/features/privacy_policy/privacy_policy_screen.dart';
+import 'package:doctor_appointment_app/features/profile/view/profile_screen.dart';
 import 'package:doctor_appointment_app/features/terms_conditions/terms_and_conditions_screen.dart';
 import 'package:doctor_appointment_app/features/notification/view/notification_screen.dart';
 import 'package:doctor_appointment_app/features/onboarding/view/onboarding_screen.dart';
@@ -40,6 +42,8 @@ class AppRoutes {
   static const String audioCall = '/audioCall';
   static const String videoCall = '/videoCall';
   static const String language = '/language';
+  static const String home = '/home';
+  static const String profile = '/profile';
 
 
 
@@ -138,6 +142,16 @@ class AppRoutes {
     GetPage(
       name: language,
       page: () => LanguageScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: home,
+      page: () => HomeScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: profile,
+      page: () => ProfileScreen(),
       transition: Transition.leftToRight,
     ),
   ];

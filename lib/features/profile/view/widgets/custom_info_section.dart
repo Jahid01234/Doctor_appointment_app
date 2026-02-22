@@ -4,8 +4,8 @@ import 'package:doctor_appointment_app/core/const/images_path.dart';
 import 'package:doctor_appointment_app/core/style/global_text_style.dart';
 import 'package:flutter/material.dart';
 
-class ProfileHeaderSection extends StatelessWidget {
-  const ProfileHeaderSection({super.key});
+class CustomInfoSection extends StatelessWidget {
+  const CustomInfoSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,15 +14,6 @@ class ProfileHeaderSection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            "Profile",
-            style: globalTextStyle(
-                fontSize: 22,
-                color: AppColors.blackColor,
-                fontWeight: FontWeight.w600
-            ),
-          ),
-          SizedBox(height: getHeight(60)),
           Image.asset(
             ImagesPath.profileImg,
             height: 130,

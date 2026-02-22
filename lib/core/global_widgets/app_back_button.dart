@@ -4,16 +4,19 @@ import 'package:get/get.dart';
 
 class AppBackButton extends StatelessWidget {
   final String? title;
+  final bool showBackButton;
 
   const AppBackButton({
     super.key,
     this.title,
+    this.showBackButton = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
+        if (showBackButton)
         GestureDetector(
           onTap: () => Get.back(),
           child: const Icon(Icons.arrow_back),
