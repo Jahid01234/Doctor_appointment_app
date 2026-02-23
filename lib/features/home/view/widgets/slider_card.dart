@@ -18,7 +18,7 @@ class SliderCard extends StatelessWidget {
       padding: const EdgeInsets.only(left: 20, top: 20),
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [AppColors.lightGreenColor, AppColors.greenColor],
+          colors: [AppColors.greenColor, AppColors.greenColor],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -82,9 +82,7 @@ class SliderCard extends StatelessWidget {
                 child: Image.asset(
                   slider.image,
                   fit: BoxFit.cover,
-                  alignment: Alignment.topCenter,
-                  color: AppColors.greenColor,
-                  colorBlendMode: BlendMode.colorBurn,
+                  alignment: Alignment.bottomRight,
                 ),
               ),
             ),
