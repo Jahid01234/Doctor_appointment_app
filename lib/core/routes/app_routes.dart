@@ -6,6 +6,7 @@ import 'package:doctor_appointment_app/features/auth/register/view/register_scre
 import 'package:doctor_appointment_app/features/bottom_nav/view/bottom_nav_bar_screen.dart';
 import 'package:doctor_appointment_app/features/help_center/view/help_center_screen.dart';
 import 'package:doctor_appointment_app/features/home/view/home_screen.dart';
+import 'package:doctor_appointment_app/features/home/view/see_all_doctor_specialist_screen.dart';
 import 'package:doctor_appointment_app/features/language/view/language_screen.dart';
 import 'package:doctor_appointment_app/features/message/view/audio_call_screen.dart';
 import 'package:doctor_appointment_app/features/message/view/video_call_screen.dart';
@@ -44,6 +45,7 @@ class AppRoutes {
   static const String language = '/language';
   static const String home = '/home';
   static const String profile = '/profile';
+  static const String seeAllDoctorSpecialist = '/seeAllDoctorSpecialist';
 
 
 
@@ -152,6 +154,11 @@ class AppRoutes {
     GetPage(
       name: profile,
       page: () => ProfileScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: seeAllDoctorSpecialist,
+      page: () => SeeAllDoctorSpecialistScreen(),
       transition: Transition.leftToRight,
     ),
   ];
