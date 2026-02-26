@@ -54,7 +54,7 @@ class LoginController extends GetxController{
       // Stop loading
       isLoading.value = false;
       clearForm();
-      EasyLoading.showSuccess("Login is successful.");
+      //EasyLoading.showSuccess("Login is successful.");
       Get.offNamed(AppRoutes.bottomNavBar);
 
     } else {
