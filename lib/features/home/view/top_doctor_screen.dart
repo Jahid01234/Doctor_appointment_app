@@ -1,6 +1,7 @@
 import 'package:doctor_appointment_app/core/const/app_colors.dart';
 import 'package:doctor_appointment_app/core/const/app_size.dart';
 import 'package:doctor_appointment_app/core/global_widgets/custom_text_field.dart';
+import 'package:doctor_appointment_app/core/routes/app_routes.dart';
 import 'package:doctor_appointment_app/core/style/global_text_style.dart';
 import 'package:doctor_appointment_app/features/home/controller/home_controller.dart';
 import 'package:doctor_appointment_app/features/home/view/widgets/doctor_filterd_tab.dart';
@@ -87,8 +88,9 @@ class TopDoctorsScreen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.search_off,
-                          size: 40, color: Colors.grey.shade400),
+                      Icon(Icons.search_off, size: 40,
+                          color: Colors.grey.shade400,
+                      ),
                       const SizedBox(height: 4),
                       Text(
                         'No doctors found',
@@ -107,7 +109,12 @@ class TopDoctorsScreen extends StatelessWidget {
                 itemCount: doctors.length,
                 itemBuilder: (context, index) {
                   final doctor = doctors[index];
-                  return TopDoctorCard(doctor: doctor, onTap: () {});
+                  return TopDoctorCard(
+                      doctor: doctor,
+                      onTap: () {
+                        Get.toNamed(AppRoutes.doctorDetails,arguments: doctor);
+                      },
+                  );
                 },
               );
             }),

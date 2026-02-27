@@ -68,21 +68,29 @@ final List<DoctorModel> doctorsData = [
     name: "Dr. John Smith",
     image: ImagesPath.d1,
     department: "General",
-    description: "Experienced general physician.",
+    description: "An Experienced General Physician is a highly skilled medical doctor"
+        " who provides comprehensive healthcare for patients of all ages. They are "
+        "trained to diagnose, treat, and manage a wide variety of common and complex"
+        " medical conditions, ranging from infections and chronic illnesses to preventive"
+        " care and health maintenance. With years of clinical experience, they excel at "
+        "taking detailed patient histories, performing thorough physical examinations, and"
+        " ordering or interpreting diagnostic tests to identify underlying health issues accurately.",
     hospitalName: "City Hospital",
     rating: 4.8,
     reviewsCount: 2,
     reviews: [
       ReviewModel(
         userName: "Alex",
-        userImage: "assets/images/user1.png",
+        userImage: ImagesPath.doctor1,
         rating: 5,
-        comment: "Very good doctor.",
+        comment: "I am extremely satisfied with the treatment because the doctor"
+            " diagnosed the problem quickly, guided me properly, and supported me"
+            " throughout the entire healing process.",
         date: "12 Feb 2026",
       ),
       ReviewModel(
         userName: "Hasan",
-        userImage: "assets/images/user2.png",
+        userImage: ImagesPath.doctor2,
         rating: 4.5,
         comment: "Helpful and polite.",
         date: "10 Feb 2026",
@@ -111,7 +119,11 @@ final List<DoctorModel> doctorsData = [
     name: "Dr. Michael Brown",
     image: ImagesPath.d3,
     department: "Neurologist",
-    description: "Brain and nerve disorder expert.",
+    description: "A neurologist is a physician with advanced training in disorders"
+        " of the central nervous system (CNS) and peripheral nervous system (PNS)."
+        " They do not usually perform surgery (that is the role of a neurosurgeon), "
+        "but they are experts in medical diagnosis, long-term disease management, "
+        "and neurological rehabilitation.",
     hospitalName: "Neuro Center",
     rating: 4.9,
     reviewsCount: 3,

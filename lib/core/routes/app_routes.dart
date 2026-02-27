@@ -5,6 +5,8 @@ import 'package:doctor_appointment_app/features/auth/login/view/login_screen.dar
 import 'package:doctor_appointment_app/features/auth/register/view/register_screen.dart';
 import 'package:doctor_appointment_app/features/bottom_nav/view/bottom_nav_bar_screen.dart';
 import 'package:doctor_appointment_app/features/help_center/view/help_center_screen.dart';
+import 'package:doctor_appointment_app/features/home/view/doctor_details_screen.dart';
+import 'package:doctor_appointment_app/features/home/view/review_screen.dart';
 import 'package:doctor_appointment_app/features/home/view/home_screen.dart';
 import 'package:doctor_appointment_app/features/home/view/see_all_doctor_specialist_screen.dart';
 import 'package:doctor_appointment_app/features/home/view/top_doctor_screen.dart';
@@ -48,6 +50,8 @@ class AppRoutes {
   static const String profile = '/profile';
   static const String seeAllDoctorSpecialist = '/seeAllDoctorSpecialist';
   static const String topDoctor = '/topDoctor';
+  static const String doctorDetails = '/doctorDetails';
+  static const String doctorReviews = '/doctorReviews';
 
 
 
@@ -166,6 +170,16 @@ class AppRoutes {
     GetPage(
       name: topDoctor,
       page: () => TopDoctorsScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: doctorDetails,
+      page: () => DoctorDetailsScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: doctorReviews,
+      page: () => ReviewsScreen(),
       transition: Transition.leftToRight,
     ),
   ];

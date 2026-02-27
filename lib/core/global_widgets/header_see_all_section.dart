@@ -14,32 +14,29 @@ class HeaderSeeAllSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            title,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: globalTextStyle(
+            fontSize: 18,
+            color: AppColors.blackColor,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        GestureDetector(
+          onTap: onTap,
+          child: Text(
+            "See All",
             style: globalTextStyle(
-              fontSize: 18,
-              color: AppColors.blackColor,
-              fontWeight: FontWeight.w600,
+              fontSize: 15,
+              color: AppColors.lightGreenColor,
+              fontWeight: FontWeight.w400,
             ),
           ),
-          GestureDetector(
-            onTap: onTap,
-            child: Text(
-              "See All",
-              style: globalTextStyle(
-                fontSize: 15,
-                color: AppColors.lightGreenColor,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

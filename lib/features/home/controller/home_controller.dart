@@ -82,7 +82,6 @@ class HomeController extends GetxController{
     result.sort((a, b) => b.rating.compareTo(a.rating));
     filteredDoctors.value = result;
 
-    // Search active থাকলে re-apply করো
     if (searchQuery.value.isNotEmpty) {
       searchDoctors(searchQuery.value);
     }

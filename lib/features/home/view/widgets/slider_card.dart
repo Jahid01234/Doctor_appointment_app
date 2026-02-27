@@ -3,6 +3,7 @@ import 'package:doctor_appointment_app/core/global_widgets/app_primary_button.da
 import 'package:doctor_appointment_app/core/style/global_text_style.dart';
 import 'package:doctor_appointment_app/features/home/model/slider_model.dart';
 import 'package:flutter/material.dart';
+import 'package:marquee/marquee.dart';
 
 class SliderCard extends StatelessWidget {
   final SliderModel slider;
@@ -11,6 +12,8 @@ class SliderCard extends StatelessWidget {
     super.key,
     required this.slider,
   });
+
+  bool _isLongText(String text) => text.length > 15;
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +35,30 @@ class SliderCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  slider.title,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: globalTextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
+                SizedBox(
+                  height: 26,
+                  child: _isLongText(slider.title)
+                      ? Marquee(
+                    text: slider.title,
+                    style: globalTextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    scrollAxis: Axis.horizontal,
+                    blankSpace: 30,
+                    velocity: 30,
+                    pauseAfterRound: const Duration(seconds: 1),
+                  )
+                      : Text(
+                    slider.title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: globalTextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 2),
@@ -68,7 +87,7 @@ class SliderCard extends StatelessWidget {
 
           const SizedBox(width: 10),
 
-          //.........................
+          //image .........................
           Expanded(
             flex: 3,
             child: ClipRRect(

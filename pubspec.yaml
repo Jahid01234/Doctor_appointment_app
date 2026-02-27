@@ -44,6 +44,8 @@ dependencies:
   url_launcher: ^6.3.2
   cached_network_image: ^3.3.1
   carousel_slider: ^5.1.2
+  marquee: ^2.3.0
+  expandable_text: ^2.3.0
 
 dev_dependencies:
   flutter_test:

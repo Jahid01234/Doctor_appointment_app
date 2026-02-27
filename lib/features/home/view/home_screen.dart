@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:doctor_appointment_app/core/const/app_size.dart';
 import 'package:doctor_appointment_app/core/global_widgets/header_see_all_section.dart';
 import 'package:doctor_appointment_app/core/routes/app_routes.dart';
@@ -33,11 +32,14 @@ class HomeScreen extends StatelessWidget {
                    SizedBox(height: getHeight(20)),
                    SliderSectionWidget(controller: controller),
                    SizedBox(height: getHeight(30)),
-                   HeaderSeeAllSection(
-                     title: "Doctor Specialist",
-                     onTap: (){
-                       Get.toNamed(AppRoutes.seeAllDoctorSpecialist);
-                     },
+                   Padding(
+                     padding: const EdgeInsets.symmetric(horizontal: 20),
+                     child: HeaderSeeAllSection(
+                       title: "Doctor Specialist",
+                       onTap: (){
+                         Get.toNamed(AppRoutes.seeAllDoctorSpecialist);
+                       },
+                     ),
                    ),
                    SizedBox(height: getHeight(15)),
                    Padding(
@@ -61,11 +63,14 @@ class HomeScreen extends StatelessWidget {
                      ),
                    ),
                    SizedBox(height: getHeight(30)),
-                   HeaderSeeAllSection(
-                     title: "Top Doctors",
-                     onTap: () {
-                       Get.toNamed(AppRoutes.topDoctor);
-                     },
+                   Padding(
+                     padding: const EdgeInsets.symmetric(horizontal: 20),
+                     child: HeaderSeeAllSection(
+                       title: "Top Doctors",
+                       onTap: () {
+                         Get.toNamed(AppRoutes.topDoctor);
+                       },
+                     ),
                    ),
                    SizedBox(height: getHeight(12)),
                    Obx(() => DoctorFilterTabs(
@@ -101,7 +106,9 @@ class HomeScreen extends StatelessWidget {
                          final doctor = doctors[index];
                          return TopDoctorCard(
                            doctor: doctor,
-                           onTap: () {},
+                           onTap: () {
+                             Get.toNamed(AppRoutes.doctorDetails,arguments: doctor);
+                           },
                          );
                        },
                      );
