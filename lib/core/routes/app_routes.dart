@@ -3,6 +3,8 @@ import 'package:doctor_appointment_app/features/auth/forget_password/view/otp_ve
 import 'package:doctor_appointment_app/features/auth/forget_password/view/set_new_password_screen.dart';
 import 'package:doctor_appointment_app/features/auth/login/view/login_screen.dart';
 import 'package:doctor_appointment_app/features/auth/register/view/register_screen.dart';
+import 'package:doctor_appointment_app/features/book_appointment/view/date_time_picker_screen.dart';
+import 'package:doctor_appointment_app/features/book_appointment/view/selected_package_screen.dart';
 import 'package:doctor_appointment_app/features/bottom_nav/view/bottom_nav_bar_screen.dart';
 import 'package:doctor_appointment_app/features/help_center/view/help_center_screen.dart';
 import 'package:doctor_appointment_app/features/home/view/doctor_details_screen.dart';
@@ -52,6 +54,8 @@ class AppRoutes {
   static const String topDoctor = '/topDoctor';
   static const String doctorDetails = '/doctorDetails';
   static const String doctorReviews = '/doctorReviews';
+  static const String dateAndTimePicker = '/dateAndTimePicker';
+  static const String selectPackage = '/selectPackage';
 
 
 
@@ -180,6 +184,16 @@ class AppRoutes {
     GetPage(
       name: doctorReviews,
       page: () => ReviewsScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: dateAndTimePicker,
+      page: () => DateAndTimePickerScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: selectPackage,
+      page: () => SelectPackageScreen(),
       transition: Transition.leftToRight,
     ),
   ];

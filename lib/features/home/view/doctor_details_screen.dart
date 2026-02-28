@@ -9,7 +9,7 @@ import 'package:doctor_appointment_app/features/home/model/doctor_model.dart';
 import 'package:doctor_appointment_app/features/home/view/widgets/doctor_profile_card.dart';
 import 'package:doctor_appointment_app/features/home/view/widgets/doctor_status_row.dart';
 import 'package:doctor_appointment_app/features/home/view/widgets/review_card.dart';
-import 'package:doctor_appointment_app/features/home/view/widgets/section_header.dart';
+import 'package:doctor_appointment_app/core/global_widgets/section_header.dart';
 import 'package:expandable_text/expandable_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -113,7 +113,7 @@ class DoctorDetailsScreen extends StatelessWidget {
                 text: "Book Appointment",
                 textColor: Colors.white,
                 onTap: () {
-                  // Navigate to booking
+                  Get.toNamed(AppRoutes.dateAndTimePicker);
                 },
               ),
             ),
