@@ -16,6 +16,7 @@ class CustomTextField extends StatelessWidget {
   final bool obsecureText;
   final TextInputType? textInputType;
   final String? errorText;
+  final int? maxLines;
 
   const CustomTextField({
     super.key,
@@ -31,23 +32,21 @@ class CustomTextField extends StatelessWidget {
     this.borderColor,
     this.readOnly,
     this.onTap,
-    this.errorText
+    this.errorText,
+    this.maxLines
   });
 
   @override
   Widget build(BuildContext context) {
-    // Determine if there's an error
     final hasError = errorText != null && errorText!.isNotEmpty;
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          height: height ?? 57,
+          height: maxLines != null && maxLines! > 1 ? null : (height ?? 57),
           width: double.infinity,
           decoration: BoxDecoration(
             border: Border.all(
-              // Show red border when error exists
               color: hasError
                         ? Colors.red
                         : (borderColor ?? const Color(0xFFF7F8F8)),
@@ -64,6 +63,7 @@ class CustomTextField extends StatelessWidget {
             onChanged: onChanged,
             readOnly: readOnly ?? false,
             cursorColor: Colors.grey,
+            maxLines: maxLines ?? 1,
             enableInteractiveSelection: false,
             style: GoogleFonts.poppins(
               fontSize: 16,
@@ -86,7 +86,10 @@ class CustomTextField extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: hasError ? Colors.transparent  :AppColors.lightGreenColor),
+                borderSide: BorderSide(color: hasError
+                    ? Colors.transparent
+                    :AppColors.lightGreenColor,
+                ),
                 borderRadius: BorderRadius.circular(12),
               ),
               border: InputBorder.none,

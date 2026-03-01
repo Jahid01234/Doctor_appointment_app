@@ -4,6 +4,7 @@ import 'package:doctor_appointment_app/features/auth/forget_password/view/set_ne
 import 'package:doctor_appointment_app/features/auth/login/view/login_screen.dart';
 import 'package:doctor_appointment_app/features/auth/register/view/register_screen.dart';
 import 'package:doctor_appointment_app/features/book_appointment/view/date_time_picker_screen.dart';
+import 'package:doctor_appointment_app/features/book_appointment/view/patient_details_screen.dart';
 import 'package:doctor_appointment_app/features/book_appointment/view/selected_package_screen.dart';
 import 'package:doctor_appointment_app/features/bottom_nav/view/bottom_nav_bar_screen.dart';
 import 'package:doctor_appointment_app/features/help_center/view/help_center_screen.dart';
@@ -56,6 +57,7 @@ class AppRoutes {
   static const String doctorReviews = '/doctorReviews';
   static const String dateAndTimePicker = '/dateAndTimePicker';
   static const String selectPackage = '/selectPackage';
+  static const String patientDetails = '/patientDetails';
 
 
 
@@ -194,6 +196,11 @@ class AppRoutes {
     GetPage(
       name: selectPackage,
       page: () => SelectPackageScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: patientDetails,
+      page: () => PatientDetailsScreen(),
       transition: Transition.leftToRight,
     ),
   ];

@@ -118,19 +118,20 @@ class PackageItem extends StatelessWidget {
                   const SizedBox(width: 10),
 
                   /// radio
-                  AnimatedContainer(
+                  AnimatedSwitcher(
                     duration: const Duration(milliseconds: 200),
-                    width: 22,
-                    height: 22,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: isSelected
-                            ? AppColors.lightGreenColor
-                            : const Color(0xFFCDD0D8),
-                        width: isSelected ? 4 : 2,
-                      ),
-                      color: Colors.white,
+                    child: isSelected
+                        ? const Icon(
+                      Icons.radio_button_checked,
+                      key: ValueKey('checked'),
+                      color: AppColors.lightGreenColor,
+                      size: 22,
+                    )
+                        : const Icon(
+                      Icons.radio_button_unchecked,
+                      key: ValueKey('unchecked'),
+                      color: AppColors.lightGreenColor,
+                      size: 22,
                     ),
                   ),
                 ],

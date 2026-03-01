@@ -60,13 +60,6 @@ class ProfileScreen extends StatelessWidget {
                       },
                     ),
                     ProfileComponentTile(
-                      icon: Icons.payment_outlined,
-                      title: "Payment",
-                      onTap: () {
-                        Get.toNamed(AppRoutes.payment);
-                      },
-                    ),
-                    ProfileComponentTile(
                       icon: Icons.security,
                       title: "Security",
                       onTap: () {

@@ -18,6 +18,17 @@ class DoctorDetailsScreen extends StatelessWidget {
   DoctorDetailsScreen({super.key});
 
   final DoctorModel doctor = Get.arguments as DoctorModel;
+  final RxBool isLoading = false.obs;
+
+  void _bookAppointment() async {
+    isLoading.value = true;
+
+    await Future.delayed(const Duration(seconds: 2));
+
+    isLoading.value = false;
+
+    Get.toNamed(AppRoutes.dateAndTimePicker);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,12 +120,15 @@ class DoctorDetailsScreen extends StatelessWidget {
             // Book Appointment Button
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16),
-              child: AppPrimaryButton(
-                text: "Book Appointment",
-                textColor: Colors.white,
-                onTap: () {
-                  Get.toNamed(AppRoutes.dateAndTimePicker);
-                },
+              child: Obx(
+                    () => AppPrimaryButton(
+                  text: "Book Appointment",
+                  isLoading: isLoading.value,
+                  textColor: Colors.white,
+                  onTap: (){
+                    _bookAppointment();
+                    },
+                ),
               ),
             ),
           ],

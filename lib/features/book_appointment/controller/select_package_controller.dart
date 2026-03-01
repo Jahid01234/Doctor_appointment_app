@@ -1,4 +1,5 @@
 import 'package:doctor_appointment_app/core/const/app_colors.dart';
+import 'package:doctor_appointment_app/core/routes/app_routes.dart';
 import 'package:doctor_appointment_app/features/book_appointment/model/package_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -50,6 +51,7 @@ class SelectPackageController extends GetxController {
     isLoading.value = true;
     await Future.delayed(const Duration(seconds: 2));
     isLoading.value = false;
+    Get.toNamed(AppRoutes.patientDetails);
 
     Get.snackbar(
       "Package Selected",
