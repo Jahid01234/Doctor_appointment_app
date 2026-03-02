@@ -1,36 +1,20 @@
 import 'package:doctor_appointment_app/core/const/app_colors.dart';
-import 'package:doctor_appointment_app/core/const/icons_path.dart';
 import 'package:doctor_appointment_app/core/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PaymentController extends GetxController{
-  RxInt selectedIndex = 0.obs;
-  RxBool isLoading = false.obs;
+class ReviewSummaryController extends GetxController{
+   RxBool isLoading =false.obs;
 
-  final List<String> paymentMethods = [
-    IconsPath.stripe,
-    IconsPath.paypal,
-    IconsPath.google,
-    IconsPath.apple
-  ];
-
-  void selectCard(int index) {
-    selectedIndex.value = index;
-  }
-
-
-
-
-  void paymentMethod() async {
+  void reviewSummaryMethod() async {
     isLoading.value = true;
     await Future.delayed(const Duration(seconds: 2));
     isLoading.value = false;
-    Get.toNamed(AppRoutes.reviewSummary);
+    Get.toNamed(AppRoutes.confirmPin);
 
     Get.snackbar(
-      "Select Payment Successful",
-      "Your payment method has been selected successfully!",
+      "Review Completed",
+      "Your information has been reviewed successfully.",
       snackPosition: SnackPosition.BOTTOM,
       backgroundColor: AppColors.lightGreenColor,
       colorText: Colors.white,
@@ -40,5 +24,4 @@ class PaymentController extends GetxController{
       duration: Duration(seconds: 2),
     );
   }
-
 }

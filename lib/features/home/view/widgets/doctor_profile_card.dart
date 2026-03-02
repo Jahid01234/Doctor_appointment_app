@@ -33,6 +33,10 @@ class DoctorProfileCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 6),
+              Divider(
+                color: AppColors.greyColor.withValues(alpha: 0.15),
+                thickness: 1,
+              ),
               Text(
                 doctor.department,
                 style: globalTextStyle(

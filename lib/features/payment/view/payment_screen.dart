@@ -19,6 +19,7 @@ class PaymentScreen extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: getHeight(60)),
             AppBackButton(title: "Payments"),
