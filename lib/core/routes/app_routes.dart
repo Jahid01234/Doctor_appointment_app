@@ -17,6 +17,7 @@ import 'package:doctor_appointment_app/features/home/view/see_all_doctor_special
 import 'package:doctor_appointment_app/features/home/view/top_doctor_screen.dart';
 import 'package:doctor_appointment_app/features/language/view/language_screen.dart';
 import 'package:doctor_appointment_app/features/message/view/audio_call_screen.dart';
+import 'package:doctor_appointment_app/features/message/view/message_screen.dart';
 import 'package:doctor_appointment_app/features/message/view/video_call_screen.dart';
 import 'package:doctor_appointment_app/features/privacy_policy/privacy_policy_screen.dart';
 import 'package:doctor_appointment_app/features/profile/view/profile_screen.dart';
@@ -62,6 +63,7 @@ class AppRoutes {
   static const String patientDetails = '/patientDetails';
   static const String reviewSummary = '/reviewSummary';
   static const String confirmPin = '/confirmPin';
+  static const String message = '/message';
 
 
 
@@ -215,6 +217,11 @@ class AppRoutes {
     GetPage(
       name: confirmPin,
       page: () => ConfirmPinScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: message,
+      page: () => MessageScreen(),
       transition: Transition.leftToRight,
     ),
   ];

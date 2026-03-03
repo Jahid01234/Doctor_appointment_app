@@ -1,4 +1,6 @@
 import 'package:doctor_appointment_app/core/const/app_colors.dart';
+import 'package:doctor_appointment_app/core/const/app_size.dart';
+import 'package:doctor_appointment_app/core/global_widgets/app_back_button.dart';
 import 'package:doctor_appointment_app/core/global_widgets/custom_text_field.dart';
 import 'package:doctor_appointment_app/core/style/global_text_style.dart';
 import 'package:doctor_appointment_app/features/message/controller/message_controller.dart';
@@ -19,13 +21,10 @@ class MessageScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            SizedBox(height: 30),
-            Text(
-             "Message",
-              style: globalTextStyle(
-                fontSize: 22,
-                fontWeight: FontWeight.w600,
-              ),
+            SizedBox(height: getHeight(60)),
+            AppBackButton(
+              title: "Message",
+              showBackButton: Get.key.currentState!.canPop(),
             ),
             SizedBox(height: 20),
             CustomTextField(
