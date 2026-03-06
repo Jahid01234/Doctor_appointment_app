@@ -63,7 +63,7 @@ class AppSuccessDialog extends StatelessWidget {
               style: globalTextStyle(
                 color: Colors.grey,
                 fontSize: 14,
-                fontWeight: FontWeight.w400
+                fontWeight: FontWeight.w400,
               ),
             ),
             const SizedBox(height: 24),
@@ -72,18 +72,19 @@ class AppSuccessDialog extends StatelessWidget {
               fontSize: 14,
               text: primaryButtonText,
               textColor: AppColors.whiteColor,
-              onTap: onPrimaryTap
+              bgColor: AppColors.lightGreenColor.withValues(alpha: 0.8),
+              onTap: onPrimaryTap,
             ),
 
             if (secondaryButtonText != null) ...[
               const SizedBox(height: 10),
               AppPrimaryButton(
-                  height: 45,
-                  fontSize: 14,
-                  bgColor: Colors.green.withValues(alpha: 0.4),
-                  text: secondaryButtonText!,
-                  textColor: AppColors.blackColor,
-                  onTap: onSecondaryTap ?? Get.back,
+                height: 45,
+                fontSize: 14,
+                text: secondaryButtonText!,
+                textColor: AppColors.blackColor,
+                bgColor: AppColors.greyColor.withValues(alpha: 0.3),
+                onTap: onSecondaryTap ?? Get.back,
               ),
             ],
           ],

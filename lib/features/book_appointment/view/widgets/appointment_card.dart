@@ -170,7 +170,7 @@ class AppointmentCard extends StatelessWidget {
 
           const SizedBox(height: 12),
 
-          /// Buttons Based On Tab
+          // Buttons Based On Tab............
           if (selectedTab == 0) // Upcoming
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -180,7 +180,8 @@ class AppointmentCard extends StatelessWidget {
                   width: 150,
                   text: "Cancel Appointment",
                   fontSize: 12,
-                  textColor: AppColors.whiteColor,
+                  textColor: AppColors.blackColor,
+                  bgColor: AppColors.greyColor.withValues(alpha: 0.3),
                   onTap: () {},
                 ),
 
@@ -190,7 +191,10 @@ class AppointmentCard extends StatelessWidget {
                   text: "Reschedule",
                   fontSize: 12,
                   textColor: AppColors.whiteColor,
-                  onTap: () {},
+                  bgColor: AppColors.lightGreenColor.withValues(alpha: 0.8),
+                  onTap: () {
+                    Get.toNamed(AppRoutes.rescheduleReason);
+                  },
                 ),
               ],
             ),
@@ -205,6 +209,7 @@ class AppointmentCard extends StatelessWidget {
                   text: "Book Again",
                   fontSize: 12,
                   textColor: AppColors.whiteColor,
+                  bgColor: AppColors.lightGreenColor.withValues(alpha: 0.8),
                   onTap: () {},
                 ),
 
@@ -213,12 +218,12 @@ class AppointmentCard extends StatelessWidget {
                   width: 150,
                   text: "Leave a Review",
                   fontSize: 12,
-                  textColor: AppColors.whiteColor,
+                  textColor: AppColors.blackColor,
+                  bgColor: AppColors.greyColor.withValues(alpha: 0.3),
                   onTap: () {},
                 ),
               ],
             ),
-
         ],
       ),
     );

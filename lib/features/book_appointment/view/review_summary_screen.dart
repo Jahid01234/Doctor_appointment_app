@@ -43,7 +43,7 @@ class ReviewSummaryScreen extends StatelessWidget {
                 InfoRow(title: "Total", value: "\$20"),
               ],
             ),
-            SizedBox(height: getHeight(100)),
+            SizedBox(height: getHeight(120)),
             Obx(() => AppPrimaryButton(
               text: "Next",
               textColor: AppColors.whiteColor,

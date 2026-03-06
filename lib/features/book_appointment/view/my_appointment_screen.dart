@@ -29,7 +29,7 @@ class MyAppointmentScreen extends StatelessWidget {
             AppointmentTabBarSection(controller: controller),
             const SizedBox(height: 10),
 
-            /// Appointment List
+            // Appointment List.......
             Expanded(
               child: Obx(() {
                 final list = controller.filteredAppointments;

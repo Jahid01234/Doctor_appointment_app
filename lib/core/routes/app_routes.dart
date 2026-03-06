@@ -5,7 +5,10 @@ import 'package:doctor_appointment_app/features/auth/login/view/login_screen.dar
 import 'package:doctor_appointment_app/features/auth/register/view/register_screen.dart';
 import 'package:doctor_appointment_app/features/book_appointment/view/confirm_pin_screen.dart';
 import 'package:doctor_appointment_app/features/book_appointment/view/date_time_picker_screen.dart';
+import 'package:doctor_appointment_app/features/book_appointment/view/my_appointment_screen.dart';
 import 'package:doctor_appointment_app/features/book_appointment/view/patient_details_screen.dart';
+import 'package:doctor_appointment_app/features/book_appointment/view/reschedule_date_time_picker_screen.dart';
+import 'package:doctor_appointment_app/features/book_appointment/view/reschedule_reason_screen.dart';
 import 'package:doctor_appointment_app/features/book_appointment/view/review_summary_screen.dart';
 import 'package:doctor_appointment_app/features/book_appointment/view/selected_package_screen.dart';
 import 'package:doctor_appointment_app/features/bottom_nav/view/bottom_nav_bar_screen.dart';
@@ -64,6 +67,9 @@ class AppRoutes {
   static const String reviewSummary = '/reviewSummary';
   static const String confirmPin = '/confirmPin';
   static const String message = '/message';
+  static const String rescheduleReason = '/rescheduleReason';
+  static const String rescheduleDateTimePicker = '/rescheduleDateTimePicker';
+  static const String myAppointment = '/myAppointment';
 
 
 
@@ -222,6 +228,21 @@ class AppRoutes {
     GetPage(
       name: message,
       page: () => MessageScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: rescheduleReason,
+      page: () => RescheduleReasonScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: rescheduleDateTimePicker,
+      page: () => RescheduleDateTimePickerScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: myAppointment,
+      page: () => MyAppointmentScreen(),
       transition: Transition.leftToRight,
     ),
   ];

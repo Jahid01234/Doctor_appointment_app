@@ -79,7 +79,7 @@ class ConfirmPinScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(height: getHeight(20)),
+                    SizedBox(height: getHeight(300)),
                     Obx(()=>
                         AppPrimaryButton(
                           text: "Confirm",
