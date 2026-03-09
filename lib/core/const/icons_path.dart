@@ -9,8 +9,8 @@ class IconsPath {
   static const String homeAc = "assets/icons/homeAc.png";
   static const String appointment = "assets/icons/appointment.png";
   static const String appointmentAc = "assets/icons/appointmentAc.png";
-  static const String location = "assets/icons/location.png";
-  static const String locationAc = "assets/icons/locationAc.png";
+  static const String article = "assets/icons/article.png";
+  static const String articleAc = "assets/icons/articleAc.png";
   static const String message = "assets/icons/message.png";
   static const String messageAc = "assets/icons/messageAc.png";
   static const String profile = "assets/icons/profile.png";

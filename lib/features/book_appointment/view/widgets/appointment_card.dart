@@ -1,4 +1,5 @@
 import 'package:doctor_appointment_app/core/const/app_colors.dart';
+import 'package:doctor_appointment_app/core/const/app_size.dart';
 import 'package:doctor_appointment_app/core/global_widgets/app_primary_button.dart';
 import 'package:doctor_appointment_app/core/routes/app_routes.dart';
 import 'package:doctor_appointment_app/core/style/global_text_style.dart';
@@ -182,7 +183,9 @@ class AppointmentCard extends StatelessWidget {
                   fontSize: 12,
                   textColor: AppColors.blackColor,
                   bgColor: AppColors.greyColor.withValues(alpha: 0.3),
-                  onTap: () {},
+                  onTap: () {
+                    cancelAppointmentBottomSheet(context);
+                  },
                 ),
 
                 AppPrimaryButton(
@@ -210,7 +213,9 @@ class AppointmentCard extends StatelessWidget {
                   fontSize: 12,
                   textColor: AppColors.whiteColor,
                   bgColor: AppColors.lightGreenColor.withValues(alpha: 0.8),
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(AppRoutes.topDoctor);
+                  },
                 ),
 
                 AppPrimaryButton(
@@ -226,6 +231,83 @@ class AppointmentCard extends StatelessWidget {
             ),
         ],
       ),
+    );
+  }
+
+  // logout bottom sheet.........
+  void cancelAppointmentBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      backgroundColor: Colors.white,
+      context: context,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(20),
+        ),
+      ),
+      builder: (context) {
+        return Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: 40,
+                height: 4,
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+              SizedBox(height: getHeight(20)),
+              Text(
+                "Cancel Appointment",
+                style: globalTextStyle(
+                  fontSize: 20,
+                  color: Colors.red,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              SizedBox(height: getHeight(10)),
+              Text(
+                "Are you sure you want to cancel Appointment?\n"
+                    " Only 50% of the funds will be returned to your account.",
+                textAlign: TextAlign.center,
+                style: globalTextStyle(
+                  fontSize: 15,
+                  color: AppColors.greyColor,
+                  fontWeight: FontWeight.w400
+                ),
+              ),
+              SizedBox(height: getHeight(30)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  AppPrimaryButton(
+                    height: 50,
+                    width: 130,
+                    text: "Cancel",
+                    textColor: AppColors.blackColor,
+                    bgColor: AppColors.greyColor.withValues(alpha: 0.3),
+                    onTap: () {
+                      Get.back();
+                    },
+                  ),
+                  AppPrimaryButton(
+                    height: 50,
+                    width: 130,
+                    text: "Yes",
+                    textColor: AppColors.whiteColor,
+                    onTap: () {
+                      Get.back();
+                    },
+                  ),
+                ],
+              ),
+              SizedBox(height: getHeight(20)),
+            ],
+          ),
+        );
+      },
     );
   }
 }

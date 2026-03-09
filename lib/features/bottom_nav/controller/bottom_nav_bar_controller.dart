@@ -1,4 +1,5 @@
 import 'package:doctor_appointment_app/core/const/icons_path.dart';
+import 'package:doctor_appointment_app/features/article/view/article_screen.dart';
 import 'package:doctor_appointment_app/features/book_appointment/view/my_appointment_screen.dart';
 import 'package:doctor_appointment_app/features/home/view/home_screen.dart';
 import 'package:doctor_appointment_app/features/message/view/message_screen.dart';
@@ -20,14 +21,14 @@ class BottomNavBarController extends GetxController{
       'title': 'Appointment',
     },
     {
-      'active': IconsPath.locationAc,
-      'inactive': IconsPath.location,
-      'title': 'Location',
-    },
-    {
       'active': IconsPath.messageAc,
       'inactive': IconsPath.message,
       'title': 'Message',
+    },
+    {
+      'active': IconsPath.articleAc,
+      'inactive': IconsPath.article,
+      'title': 'Article',
     },
     {
       'active': IconsPath.profileAc,
@@ -43,8 +44,8 @@ class BottomNavBarController extends GetxController{
   final List<Widget> pages = [
     HomeScreen(),
     MyAppointmentScreen(),
-    Center(child: Text("Location.....")),
     MessageScreen(),
+    ArticleScreen(),
     ProfileScreen()
   ];
 }

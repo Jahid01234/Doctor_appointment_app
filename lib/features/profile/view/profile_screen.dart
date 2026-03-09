@@ -165,6 +165,7 @@ class ProfileScreen extends StatelessWidget {
                 style: globalTextStyle(
                   fontSize: 16,
                   color: AppColors.greyColor,
+                  fontWeight: FontWeight.w400
                 ),
               ),
               SizedBox(height: getHeight(30)),
@@ -175,8 +176,8 @@ class ProfileScreen extends StatelessWidget {
                     height: 50,
                     width: 130,
                     text: "Cancel",
-                    bgColor: AppColors.greyColor,
-                    textColor: AppColors.whiteColor,
+                    textColor: AppColors.blackColor,
+                    bgColor: AppColors.greyColor.withValues(alpha: 0.3),
                     onTap: () {
                       Get.back();
                     },
