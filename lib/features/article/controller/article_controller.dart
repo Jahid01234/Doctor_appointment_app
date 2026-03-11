@@ -1,7 +1,9 @@
 import 'package:doctor_appointment_app/features/article/model/article_model.dart';
+import 'package:doctor_appointment_app/features/article/model/trending_model.dart';
 import 'package:get/get.dart';
 
 class ArticleController extends GetxController{
+  RxList<TrendingModel> trendingList = <TrendingModel>[].obs;
   RxList<ArticleModel> allArticles = <ArticleModel>[].obs;
   RxList<ArticleModel> filteredArticles = <ArticleModel>[].obs;
   RxString selectedFilter = 'All'.obs;
@@ -20,6 +22,7 @@ class ArticleController extends GetxController{
   @override
   void onInit() {
     super.onInit();
+    loadTrending();
     loadArticles();
   }
 
@@ -27,6 +30,10 @@ class ArticleController extends GetxController{
     currentIndex.value = index;
   }
 
+
+  void loadTrending() {
+    trendingList.value = trendingData;
+  }
 
   void loadArticles() {
     allArticles.value = articlesData;

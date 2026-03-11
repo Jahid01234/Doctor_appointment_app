@@ -7,7 +7,6 @@ class ImagesPath {
   static const String doctor1 = "assets/images/doctor1.png";
   static const String doctor2 = "assets/images/doctor2.png";
   static const String doctor3 = "assets/images/doctor3.png";
-
   static const String d1 = "assets/images/d1.jpg";
   static const String d2 = "assets/images/d2.jpg";
   static const String d3 = "assets/images/d3.jpg";
@@ -18,5 +17,10 @@ class ImagesPath {
   static const String d8 = "assets/images/d8.jpg";
   static const String d9 = "assets/images/d9.jpg";
   static const String d10 = "assets/images/d10.jpg";
+
+  static const String covid19 = "assets/images/covid-19.jpg";
+  static const String health = "assets/images/health.jpg";
+  static const String lifeStyle = "assets/images/lifestyle.jpg";
+  static const String medical = "assets/images/medical.jpg";
 
 }

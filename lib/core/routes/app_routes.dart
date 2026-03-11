@@ -1,3 +1,5 @@
+import 'package:doctor_appointment_app/features/article/view/article_details_screen.dart';
+import 'package:doctor_appointment_app/features/article/view/see_all_articles_screen.dart';
 import 'package:doctor_appointment_app/features/auth/forget_password/view/forget_password_screen.dart';
 import 'package:doctor_appointment_app/features/auth/forget_password/view/otp_verify_screen.dart';
 import 'package:doctor_appointment_app/features/auth/forget_password/view/set_new_password_screen.dart';
@@ -70,6 +72,8 @@ class AppRoutes {
   static const String rescheduleReason = '/rescheduleReason';
   static const String rescheduleDateTimePicker = '/rescheduleDateTimePicker';
   static const String myAppointment = '/myAppointment';
+  static const String seeAllArticles = '/seeAllArticles';
+  static const String articleDetails = '/articleDetails';
 
 
 
@@ -243,6 +247,16 @@ class AppRoutes {
     GetPage(
       name: myAppointment,
       page: () => MyAppointmentScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: seeAllArticles,
+      page: () => SeeAllArticlesScreen(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: articleDetails,
+      page: () => ArticleDetailsScreen(),
       transition: Transition.leftToRight,
     ),
   ];
