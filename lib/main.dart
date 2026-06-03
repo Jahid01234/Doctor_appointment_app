@@ -1,14 +1,18 @@
 import 'package:doctor_appointment_app/app.dart';
+import 'package:doctor_appointment_app/core/const/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
-void main() {
-  configEasyLoading();
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await AppFonts.loadGoogleFonts();
+  _configEasyLoading();
   runApp(const MyApp());
 }
 
 
-void configEasyLoading() {
+void _configEasyLoading() {
   EasyLoading.instance
     ..indicatorType = EasyLoadingIndicatorType.fadingCircle
     ..loadingStyle = EasyLoadingStyle.custom

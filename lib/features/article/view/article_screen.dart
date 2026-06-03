@@ -24,9 +24,12 @@ class ArticleScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: getHeight(60)),
-          AppBackButton(
-            title: "Articles",
-            showBackButton: Get.key.currentState!.canPop(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: AppBackButton(
+              title: "Articles",
+              showBackButton: Get.key.currentState!.canPop(),
+            ),
           ),
           SizedBox(height: getHeight(30)),
           Expanded(
